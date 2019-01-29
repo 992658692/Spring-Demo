@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+			http://www.springframework.org/schema/cache
+			http://www.springframework.org/schema/cache/spring-cache.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop.xsd">
+		<!-- 与@EnableCaching 等效-->
+		<cache:annotation-driven/>
+
+		<!-- 声明缓存管理器 -->
+		<bean id="cacheManager" class="org.springframework.cache.concurrent.ConcurrentMapCacheManager"/>
+		
+		<aop:config>
+			<aop:advisor advice-ref="cacheAdvice"
+				pointcut="execution(* com.xxx.xxx.*(..))"/>
+		</aop:config>
+		
+		<!--cache属性为缓存名 cache-manager属性使用来指定缓存管理器的 
+			可以在每个缓存中声明缓存名，也可以统一在caching中声明-->
+		<cache:advice id="cacheAdvice">
+			<cache:caching cache="findOn">
+				<cache:cacheable cache="findOne"
+								method="findOne"/>
+				<cache:cache-put cache="findOne" method="findOne" key="#result.id"/>
+				<cache:cache-evict cache="findOne" method="findOne"/>
+			</cache:caching>
+		</cache:advice>
+</beans>

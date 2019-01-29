@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation=
+		   "http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context-4.2.xsd
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<bean class="org.spring.dem.supdi.Notepad" scope="session">
+		<!-- 这个是xml开启代理的方式 -->
+		<aop:scoped-proxy/>
+	</bean>
+	<!--该元素会为你生成一个PropertySourcesPlaceholderConfigurer bean
+	 	这个时候就能使用${disc.title}的方式来获取到properties文件中的参数值了
+	 	或者利用注解@value("${disc.title}")-->
+	<context:property-placeholder />
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
+			p:driverClassName="com.mysql.jdbc.Driver"
+			p:url="jdbc:mysql://111.231.58.67:3306/test?useUnicode=true&characterEncoding=utf8"
+			p:username="root"
+			p:password="root"
+			p:initialSize="5"
+			p:maxActive="10"/>
+</beans>

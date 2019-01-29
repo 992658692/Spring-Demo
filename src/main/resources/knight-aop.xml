@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	<bean id="knight" class="org.spring.dem.aop.BraveKnight">
+		<constructor-arg ref="quest"/>
+		<constructor-arg ref="minstrel"/>
+	</bean>
+	<bean id="quest" class="org.spring.dem.di.SlayDragonQuest">
+		<constructor-arg ref="printStream"></constructor-arg>
+	</bean>
+	<bean id="minstrel" class="org.spring.dem.aop.Minstrel">
+		<constructor-arg ref="printStream"></constructor-arg>
+	</bean>
+	<bean id="printStream" class="org.spring.dem.di.PrintStream"/>
+	
+	<aop:config>
+		<!-- 定义minstrel为一个切面 -->
+		<aop:aspect ref="minstrel">
+			<!--execution表达式:
+				第一个*号表示返回类型，*标识所有类型
+				第二个*号表示类名， *号表示所有类
+				.embarkOnQuest表示类中的方法，*好标识所有方法
+				(..)为方法中的参数，*号表示所有参数类型为所有类型，..不但标识参数类型不限 参数个数也不限
+				xml中由于 也可以用and or not 分别来替代 && || ！、
+				within 该指示器是制定包名，只有满足该包名下的类的方法 才会被当成切点，如果在别的包下也有同名方法则不会被当作切点
+				bean 指示器可以通过使用bean的id来配置特定的切点-->
+			<!-- 定义一个embark的切点 -->
+			<!--根据pointcut的定义位置可以使得切点被多个切面调用
+				当切点定义在切面内时该切点只能被它外部的切面所引用，
+				如果想让该切点被多个切面引用，可以将该切点定义在config之内 aspect之外 -->
+			<aop:pointcut id="embark" expression="execution(* *.embarkOnQuest(..))"/>
+			<!--pointcut-ref引用切点 并在相应的时候切入相应的方法，
+			 	方法为定义前面中的方法-->
+			<aop:around pointcut-ref="embark" method="singAroundQuest" />
+			<aop:before pointcut-ref="embark" method="singBeforeQuest" />
+			<aop:after pointcut-ref="embark" method="singAfterQuest" />
+		</aop:aspect>
+	</aop:config>
+</beans>

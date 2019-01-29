@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+	
+	<!-- 与注解@ComponentScan功能一样 -->
+	<Context:component-scan base-package="org.spring.dem.di2"></Context:component-scan>
+	
+	<!--xml创建bean时需要类的完全限定名
+	 	当创建bean时没有定义ID的时候系统默认的ID是soundsystem.SgtPeppers#0
+	 	#0代表这个bean的编号，如果声明了2个相同的bean并且都没有明确的标识下是依靠这个参数进行区分的
+	 	最好是用id属性自定义ID-->
+	<bean id="compactDisc" class="org.spring.dem.di2.SgtPeppers"/>
+	
+<!-- 	<bean id="cdPlayer" class="org.spring.dem.di2.CdPlayer">
+		<constructor-arg ref="compactDisc"></constructor-arg>
+	</bean> -->
+	
+	<!--spring注入的2种方式 构造注入与属性注入 
+		这2种注入的区分场景，个人认为对于强依赖注入用构造
+		对于可以选依赖就选择属性注入-->
+	<!-- c-命名空间的语法(适用于构造注入)
+		c:cd-ref=xxx
+		c:是它命名空间的前缀
+		cd是构造器的参数名(可以用_0来代替 0是参数位置下标，java中不能以数字命名故加入_)
+		-ref是指对构造器入参的参数引用
+		最后则是其他引用bean的id 
+	<bean id="" class="org.spring.dem.di2.CdPlayer" 
+		c:cd-ref="compactDisc"/>-->
+	<!--property是针对set方法的属性注入
+	 	类似c-命名空间的方式，也有同样p-的命名方式来替代property元素
+	 	-->
+	<bean id="cdPlayer" class="org.spring.dem.di2.CdPlayer" p:cd-ref = "compactDisc">
+		<!-- <property name="cd" ref="compactDisc"></property> 
+		<property name="xx">
+			<list>
+				<ref bean="xxx" />
+				<ref bean="xxx" />
+				<ref bean="xxx" />
+			</list>
+		</property>-->
+	</bean>
+	
+	<!-- 利用util-命名空间就可以声明集合 单独的创建一个列表bean -->
+	<util:list id="x-name">
+		<value>xxx</value>
+		<value></value>
+		<value></value>
+		<value></value>
+		<value></value>
+	</util:list>
+		
+		
+	<!--直接根据参数的顺序自上而下对应从左到右 给构造的参数赋值
+		list 不但可以是基本类型也可以利用ref元素引用bean
+		在装配集合方面 constructor-arg比c-命名空间更有优势-->
+	<!--<bean id="blankDisc" class="org.spring.dem.di2.BlankDisc">
+		<constructor-arg value="blank" />
+		<constructor-arg vale="beatles" />
+		<constructor-arg>
+			<list>
+				<value>xxx</value>
+				<value>xxx</value>
+				<value>xxx</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="xxx" />
+				<ref bean="xxx" />
+				<ref bean="xxx" />
+			</list>
+		</constructor-arg>
+	</bean> -->
+	<!--c-命名空间模式 
+		c:_tital="blank"
+		c:_artist="beatles"-->
+	<bean id="blankDisc" class="org.spring.dem.di2.BlankDisc" 
+		c:_0="blank"
+		c:_1="beatles"/>
+	
+	<!-- 可以用bean元素将javaconfig的配置导入进来 -->
+	<bean class="org.spring.dem.di2.CdPalyerConfig"></bean>
+	<import resource="knight-di.xml"/>
+</beans>

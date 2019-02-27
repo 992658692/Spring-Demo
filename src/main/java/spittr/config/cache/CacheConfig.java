@@ -73,19 +73,19 @@ public class CacheConfig {
 		redisTemplate.afterPropertiesSet();
 		return redisTemplate;
 	}
-//
-//	@Bean
-//	public org.springframework.cache.CacheManager cacheManager(CacheManager cm, javax.cache.CacheManager jcm) {
-//
-//		//???????????????????????
-//		CompositeCacheManager cacheManager = new CompositeCacheManager();
-//		List<org.springframework.cache.CacheManager> manager = new ArrayList<org.springframework.cache.CacheManager>();
-//		manager.add(new JCacheCacheManager(jcm));
-//		manager.add(new EhCacheCacheManager(cm));
-//		manager.add(new RedisCacheManager(new RedisTemplate<>()));
-//		cacheManager.setCacheManagers(manager);
-//		return null;
-//	}
+
+	@Bean
+	public org.springframework.cache.CacheManager cacheManager(CacheManager cm, javax.cache.CacheManager jcm) {
+
+		//???????????????????????
+		CompositeCacheManager cacheManager = new CompositeCacheManager();
+		List<org.springframework.cache.CacheManager> manager = new ArrayList<org.springframework.cache.CacheManager>();
+		manager.add(new JCacheCacheManager(jcm));
+		manager.add(new EhCacheCacheManager(cm));
+		manager.add(new RedisCacheManager(new RedisTemplate<>()));
+		cacheManager.setCacheManagers(manager);
+		return null;
+	}
 
 	@Cacheable(value = "findOne", key="#reuslt.xx")
 	//findOne???? ?Spring????? ?????????????????????????????????Key-value??????

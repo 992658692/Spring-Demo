@@ -36,6 +36,8 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 
 import spittr.config.ctrl.User;
 
+//configuration注解可以代替以前的spring.xml文件，做到对bean的管理功能
+//以new AnnotationConfigApplicationContext(RootConfig.class)方式加载
 @Configuration
 @ComponentScan(basePackages={"spittr.config.ctrl"}, excludeFilters={@Filter(type=FilterType.ANNOTATION)})
 //扫描dao接口
@@ -54,7 +56,7 @@ public class RootConfig {
 	}
 	
 	//其实如果不是ws  单纯的mvc的话其实不需要手动配置数据库连接 
-	//数据库连接配置开始
+	/**数据库连接配置开始*/
 	@Bean
 	public DataSource getDataSource () {
 		BasicDataSource dataSource = new BasicDataSource();
@@ -76,7 +78,7 @@ public class RootConfig {
 		sessionFactory.setDataSource(getDataSource());
 		return sessionFactory.getObject();
 	}
-	//数据库连接配置结束
+	/**数据库连接配置结束*/
 
 	//处理请求中的图片
 	@Bean

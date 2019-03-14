@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import spittr.config.ctrl.User;
 
 @Configuration
-//启动mvc注解
+//启动mvc注解<mvc:annotation-driven/>
 @EnableWebMvc
 @ComponentScan("spittr.config.ctrl")
 public class WebConfig extends WebMvcConfigurerAdapter {

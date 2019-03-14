@@ -14,83 +14,83 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 @Configuration
-//¸Ã×¢½â±¾ÉíÃ»ÓĞÊ²Ã´¾ßÌå×÷ÓÃ
+//è¯¥æ³¨è§£æœ¬èº«æ²¡æœ‰ä»€ä¹ˆå…·ä½“ä½œç”¨
 @EnableWebSecurity
-//Spring Security×î¹Ø¼üµÄ»¹ÊÇÒªÊµÏÖWebSecurityConfigurer »òÕßÒ»¸öÊµÏÖ¸Ã½Ó¿ÚµÄ×ÓÀà
-//Ò»¸öSpring securityµÄ»ù±¾ÅäÖÃ
-//ÅäÖÃÓÃ»§´æ´¢(ÖØÔØconfigure(AuthenticationManagerBuilder auth))
-//Ö¸¶¨ÄÄĞ©ÇëÇóĞèÒªÈÏÖ¤£¬ ÄÄĞ©ÇëÇó²»ĞèÒªÈÏÖ¤£¬ÒÔ¼°ËùĞèµÄÈ¨ÏŞ(ÖØÔØ configure(HttpSecurity http))
-//Ö¸¶¨Ò»¸ö×Ô¶¨ÒåµÇÂ¼Ò³£¬À´´úÌæÔ­À´µÄÄ¬ÈÏµÇÂ¼Ò³
+//Spring Securityæœ€å…³é”®çš„è¿˜æ˜¯è¦å®ç°WebSecurityConfigurer æˆ–è€…ä¸€ä¸ªå®ç°è¯¥æ¥å£çš„å­ç±»
+//ä¸€ä¸ªSpring securityçš„åŸºæœ¬é…ç½®
+//é…ç½®ç”¨æˆ·å­˜å‚¨(é‡è½½configure(AuthenticationManagerBuilder auth))
+//æŒ‡å®šå“ªäº›è¯·æ±‚éœ€è¦è®¤è¯ï¼Œ å“ªäº›è¯·æ±‚ä¸éœ€è¦è®¤è¯ï¼Œä»¥åŠæ‰€éœ€çš„æƒé™(é‡è½½ configure(HttpSecurity http))
+//æŒ‡å®šä¸€ä¸ªè‡ªå®šä¹‰ç™»å½•é¡µï¼Œæ¥ä»£æ›¿åŸæ¥çš„é»˜è®¤ç™»å½•é¡µ
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	private DataSource dataSource;
 
 	@Override
-	//ÖØÔØ£¬ ÅäÖÃuser-detail·şÎñ
+	//é‡è½½ï¼Œ é…ç½®user-detailæœåŠ¡
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
-		//ÕâÖÖÈë²Î·½Ê½¼È¿ÉÒÔÂú×ã¶à²ÎÊı·â×° ÓÖ²»»áµ¼ÖÂÈë²ÎÊıÁ¿Ì«¶à½«²ÎÊıË³Ğò¸ã»ì
-		//inMemoryAuthentication()¸Ã·½·¨ÓÃÀ´ÆôÓÃÓÃ»§ÄÚ´æ
-		//Õâ¸ö·½·¨µÄ¹¦ÄÜÊÇÆôÓÃÄÚ´æ²¢ÍùÀïÌí¼Ó2¸öÓÃ»§ userÒÔ¼°admin »¹¶¨ÒåÁËÕâ2¸öÓÃ»§µÄÃÜÂëÈ¨ÏŞµÈ
-		//¸ÃÄÚ´æ·½Ê½ÊÊÓÃÓÚ¿ª·¢¼°²âÊÔ Èç¹ûÊÇÕıÊ½Éú²ú»·¾³×îºÃ»¹ÊÇÀûÓÃÊı¾İ¿â±£´æ
+		//è¿™ç§å…¥å‚æ–¹å¼æ—¢å¯ä»¥æ»¡è¶³å¤šå‚æ•°å°è£… åˆä¸ä¼šå¯¼è‡´å…¥å‚æ•°é‡å¤ªå¤šå°†å‚æ•°é¡ºåºææ··
+		//inMemoryAuthentication()è¯¥æ–¹æ³•ç”¨æ¥å¯ç”¨ç”¨æˆ·å†…å­˜
+		//è¿™ä¸ªæ–¹æ³•çš„åŠŸèƒ½æ˜¯å¯ç”¨å†…å­˜å¹¶å¾€é‡Œæ·»åŠ 2ä¸ªç”¨æˆ· userä»¥åŠadmin è¿˜å®šä¹‰äº†è¿™2ä¸ªç”¨æˆ·çš„å¯†ç æƒé™ç­‰
+		//è¯¥å†…å­˜æ–¹å¼é€‚ç”¨äºå¼€å‘åŠæµ‹è¯• å¦‚æœæ˜¯æ­£å¼ç”Ÿäº§ç¯å¢ƒæœ€å¥½è¿˜æ˜¯åˆ©ç”¨æ•°æ®åº“ä¿å­˜
 //		auth.inMemoryAuthentication()
 //			.withUser("user").password("password").roles("USER").and()
 //			.withUser("admin").password("password").roles("USER","ADMIN");
 		
-		//¿ÉÒÔÒÔÕâÑùµÄ·½Ê½ÈÃSpring SecurityÊ¹ÓÃÊı¾İ¿âÎªÓÃ»§´æ´¢
-		//Ê¹ÓÃjdbc×Ô¶¨ÒåsqlµÄÊ±ºò£¬±ØĞëÒª×ñÑ­Ò»µã¹æÔò£ºËùÓĞµÄ²éÑ¯ÓÃ»§Ãû¶¼ÊÇÎ¨Ò»²ÎÊı
+		//å¯ä»¥ä»¥è¿™æ ·çš„æ–¹å¼è®©Spring Securityä½¿ç”¨æ•°æ®åº“ä¸ºç”¨æˆ·å­˜å‚¨
+		//ä½¿ç”¨jdbcè‡ªå®šä¹‰sqlçš„æ—¶å€™ï¼Œå¿…é¡»è¦éµå¾ªä¸€ç‚¹è§„åˆ™ï¼šæ‰€æœ‰çš„æŸ¥è¯¢ç”¨æˆ·åéƒ½æ˜¯å”¯ä¸€å‚æ•°
 		auth.jdbcAuthentication().dataSource(dataSource)
-			//ÈÏÖ¤²éÑ¯£ºµ¥ÌõÓÃ»§ĞÅÏ¢
+			//è®¤è¯æŸ¥è¯¢ï¼šå•æ¡ç”¨æˆ·ä¿¡æ¯
 			.usersByUsernameQuery("select username, password, role from sys_user")
-			//È¨ÏŞ²éÑ¯£º0Ìõ»ò¶àÌõ¸ÃÓÃ»§¶ÔÓ¦µÄÈ¨ÏŞĞÅÏ¢Êı¾İ
+			//æƒé™æŸ¥è¯¢ï¼š0æ¡æˆ–å¤šæ¡è¯¥ç”¨æˆ·å¯¹åº”çš„æƒé™ä¿¡æ¯æ•°æ®
 			.authoritiesByUsernameQuery("select username, password, role form sys_user  where username = ?")
-			//Èº×éÈ¨ÏŞ²éÑ¯£º¿ÉÒÔ²éÑ¯¶ÔÓ¦Èº×éÏÂµÄ È¨ÏŞ
+			//ç¾¤ç»„æƒé™æŸ¥è¯¢ï¼šå¯ä»¥æŸ¥è¯¢å¯¹åº”ç¾¤ç»„ä¸‹çš„ æƒé™
 			.groupAuthoritiesByUsername("select * from sys_user where username = ?")
-			//ÃÜÂë×ªÂëÆ÷
+			//å¯†ç è½¬ç å™¨
 			.passwordEncoder(new StandardPasswordEncoder(""));
 		
-		//LDAPÊÇÒ»¸öÊı¾İ¿â£¬µ«ÊÇÓÖ²»ÊÇÒ»¸öÊı¾İ¿â¡£ËµËûÊÇÊı¾İ¿â£¬ÒòÎªËûÊÇÒ»¸öÊı¾İ´æ´¢µÄ¶«Î÷¡£µ«ÊÇËµËû²»ÊÇÊı¾İ¿â£¬ÊÇÒòÎªËûµÄ×÷ÓÃÃ»ÓĞÊı¾İ¿âÕâÃ´Ç¿´ó£¬¶øÊÇÒ»¸öÄ¿Â¼¡£
-		//ÎªÁËÀí½â£¬¸øÒ»¸öÀı×Ó¾ÍÊÇµç»°²¾£¨»ÆÒ³£©
+		//LDAPæ˜¯ä¸€ä¸ªæ•°æ®åº“ï¼Œä½†æ˜¯åˆä¸æ˜¯ä¸€ä¸ªæ•°æ®åº“ã€‚è¯´ä»–æ˜¯æ•°æ®åº“ï¼Œå› ä¸ºä»–æ˜¯ä¸€ä¸ªæ•°æ®å­˜å‚¨çš„ä¸œè¥¿ã€‚ä½†æ˜¯è¯´ä»–ä¸æ˜¯æ•°æ®åº“ï¼Œæ˜¯å› ä¸ºä»–çš„ä½œç”¨æ²¡æœ‰æ•°æ®åº“è¿™ä¹ˆå¼ºå¤§ï¼Œè€Œæ˜¯ä¸€ä¸ªç›®å½•ã€‚
+		//ä¸ºäº†ç†è§£ï¼Œç»™ä¸€ä¸ªä¾‹å­å°±æ˜¯ç”µè¯ç°¿ï¼ˆé»„é¡µï¼‰
 		auth.ldapAuthentication()
-			//Îª»ù´¡²éÑ¯Ìá¹©Ìõ¼ş 
-			//ÉùÃ÷ÓÃ»§ÔÚÃûÎªpeopleµÄ×éÖ¯µ¥ÔªÏÂ²éÑ¯
+			//ä¸ºåŸºç¡€æŸ¥è¯¢æä¾›æ¡ä»¶ 
+			//å£°æ˜ç”¨æˆ·åœ¨åä¸ºpeopleçš„ç»„ç»‡å•å…ƒä¸‹æŸ¥è¯¢
 			.userSearchBase("ou=people")
-			//ÓÃ»§Ìõ¼ş
+			//ç”¨æˆ·æ¡ä»¶
 			.userSearchFilter("uid={0}")
-			//ÉùÃ÷×éÔÚÃûÎªgroupsµÄ×éÖ¯µ¥ÔªÏÂ²éÑ¯
+			//å£°æ˜ç»„åœ¨åä¸ºgroupsçš„ç»„ç»‡å•å…ƒä¸‹æŸ¥è¯¢
 			.groupSearchBase("ou=groups")
-			//×éÌõ¼ş
+			//ç»„æ¡ä»¶
 			.groupSearchFilter("member={0}")
 			
-			//encoderÊÇÒ»ÖÖÃÜÂë×ª»¯Æ÷
-			//attributeÊÇ½«ÃÜÂëÓëÖÆ¶¨ÊôĞÔ¶Ô±È£¬Ä¬ÈÏÊÇuserpassword
+			//encoderæ˜¯ä¸€ç§å¯†ç è½¬åŒ–å™¨
+			//attributeæ˜¯å°†å¯†ç ä¸åˆ¶å®šå±æ€§å¯¹æ¯”ï¼Œé»˜è®¤æ˜¯userpassword
 			.passwordCompare()
 			.passwordEncoder(new Md5PasswordEncoder())
 			.passwordAttribute("passcode");	
 	}
 	
 	@Override
-	//ÖØÔØ£¬ ÅäÖÃÈçºÎÍ¨¹ıÀ¹½ØÆ÷±£»¤ÇëÇó
+	//é‡è½½ï¼Œ é…ç½®å¦‚ä½•é€šè¿‡æ‹¦æˆªå™¨ä¿æŠ¤è¯·æ±‚
 	protected void configure(HttpSecurity http) throws Exception {
-		//Õâ¸öÊÇhttpÀ¹½ØµÄÄ¬ÈÏÅäÖÃ
-		//Í¨¹ıµ÷ÓÃauthorizeRequests() anyRequest() authenticated()À´ÒªÇóËùÓĞ½øÈëÓ¦ÓÃµÄhttpÇëÇó¶¼Òª½øĞĞÑéÖ¤
-		//formLogin() ÓÃÀ´ÅäÖÃÖ§³Ö±íµ¥µÇÂ¼
-		//httpBasic() ÓÃÀ´ÅäÖÃÖ§³ÖHTTP BasicÈÏÖ¤
+		//è¿™ä¸ªæ˜¯httpæ‹¦æˆªçš„é»˜è®¤é…ç½®
+		//é€šè¿‡è°ƒç”¨authorizeRequests() anyRequest() authenticated()æ¥è¦æ±‚æ‰€æœ‰è¿›å…¥åº”ç”¨çš„httpè¯·æ±‚éƒ½è¦è¿›è¡ŒéªŒè¯
+		//formLogin() ç”¨æ¥é…ç½®æ”¯æŒè¡¨å•ç™»å½•
+		//httpBasic() ç”¨æ¥é…ç½®æ”¯æŒHTTP Basicè®¤è¯
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
 		
 		http.authorizeRequests()
-			//¶¨Òåspitters/meĞèÒª½øĞĞÈ¨ÏŞÈÏÖ¤
-			//Ò²¿ÉÒÔÊ¹ÓÃÍ¨Åä·û**
+			//å®šä¹‰spitters/meéœ€è¦è¿›è¡Œæƒé™è®¤è¯
+			//ä¹Ÿå¯ä»¥ä½¿ç”¨é€šé…ç¬¦**
 			.antMatchers("/spitters/me").authenticated()
-			//¸ü¾ßÌåµÄ¹æ¶¨postÀàĞÍµÄspittersÇëÇóĞèÒªÈÏÖ¤
+			//æ›´å…·ä½“çš„è§„å®špostç±»å‹çš„spittersè¯·æ±‚éœ€è¦è®¤è¯
 			.antMatchers(HttpMethod.POST, "/spittles").authenticated()
-			//anyRequest().permitAll()±íÊ¾ÆäÓàµÄÇëÇó¶¼²»ĞèÒªÈÏÖ¤
+			//anyRequest().permitAll()è¡¨ç¤ºå…¶ä½™çš„è¯·æ±‚éƒ½ä¸éœ€è¦è®¤è¯
 			.anyRequest().permitAll();
 	}
 	
 	@Override
-	//ÖØÔØ£¬ÅäÖÃSpring Security µÄFilterÁ´
+	//é‡è½½ï¼Œé…ç½®Spring Security çš„Filteré“¾
 	public void configure(WebSecurity web) {
 		
 	}

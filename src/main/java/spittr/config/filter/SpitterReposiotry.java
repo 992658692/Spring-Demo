@@ -9,7 +9,7 @@ public class SpitterReposiotry {
 	
 	
 	public UserDetails findByUsername(){
-		System.out.println("redis²éÑ¯:");
+		System.out.println("redisæŸ¥è¯¢:");
 		return new UserDetails() {
 			
 			@Override

@@ -10,14 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class JpaSpitterRepository implements SpitterRepository{
 
-	//¸Ã×¢½â²¢²»»áÕæÕıµÄ×¢ÈëÒ»¸ö¶ÔÏó£¬¶øÊÇÊ¹ÓÃÒ»¸öEntityManagerµÄ´úÀí
-	//ÕæÕıµÄEntityManagerÊÇÓëµ±Ç°ÊÂÎñ°ó¶¨ÔÚÒ»ÆğµÄ
-	//ÓÉÓÚ¸Ã×¢½â²¢²»ÊÇspring×Ô´øµÄ ËùÒÔÏëÊ¹ÓÃ¸Ã×¢½â±ØĞëÒªÅäºÏspirngµÄÉ¨Ãè
+	//è¯¥æ³¨è§£å¹¶ä¸ä¼šçœŸæ­£çš„æ³¨å…¥ä¸€ä¸ªå¯¹è±¡ï¼Œè€Œæ˜¯ä½¿ç”¨ä¸€ä¸ªEntityManagerçš„ä»£ç†
+	//çœŸæ­£çš„EntityManageræ˜¯ä¸å½“å‰äº‹åŠ¡ç»‘å®šåœ¨ä¸€èµ·çš„
+	//ç”±äºè¯¥æ³¨è§£å¹¶ä¸æ˜¯springè‡ªå¸¦çš„ æ‰€ä»¥æƒ³ä½¿ç”¨è¯¥æ³¨è§£å¿…é¡»è¦é…åˆspirngçš„æ‰«æ
 	@PersistenceContext
-	private EntityManager em;//×¢ÈëEntityManager
+	private EntityManager em;//æ³¨å…¥EntityManager
 	
 	
-	//Ê¹ÓÃEntityManager
+	//ä½¿ç”¨EntityManager
 	public void addSpitter(Spitter spitter) {
 		em.persist(spitter);
 	}

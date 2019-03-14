@@ -8,8 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
 @Configuration
-//@PropertySource引用properties配置文件
-//将文件内的内容加载到Environment对象中并创建一个这样的bean对象
+//@PropertySource寮曠敤properties閰嶇疆鏂囦欢
+//灏嗘枃浠跺唴鐨勫唴瀹瑰姞杞藉埌Environment瀵硅薄涓苟鍒涘缓涓�涓繖鏍风殑bean瀵硅薄
 @PropertySource("classpath:app.properties")
 public class NoteConfig {
 

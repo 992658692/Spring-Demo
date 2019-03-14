@@ -5,9 +5,9 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.stereotype.Component;
 
-//@Component ×¢½â¾ÍÊÇÓÃÀ´¸æËßSpring ÈİÆ÷£¬ÒªÎªÕâ¸öÀà´´½¨bean
-//¶øÕâ¸öÀàÔÚspirngÖĞµÄidÎªÕâ¸öÀàµÄÀàÃû£¬Ö»ÊÇÊ××ÖÄ¸±ä³ÉÁËĞ¡Ğ´sgtPeppers
-//Ò²¿ÉÒÔÎªÕâ¸öid×Ô¶¨ÒåÒ»¸öÃû×Ö
+//@Component æ³¨è§£å°±æ˜¯ç”¨æ¥å‘Šè¯‰Spring å®¹å™¨ï¼Œè¦ä¸ºè¿™ä¸ªç±»åˆ›å»ºbean
+//è€Œè¿™ä¸ªç±»åœ¨spirngä¸­çš„idä¸ºè¿™ä¸ªç±»çš„ç±»åï¼Œåªæ˜¯é¦–å­—æ¯å˜æˆäº†å°å†™sgtPeppers
+//ä¹Ÿå¯ä»¥ä¸ºè¿™ä¸ªidè‡ªå®šä¹‰ä¸€ä¸ªåå­—
 @Component
 public class SgtPeppers implements CompactDisc, Condition{
 

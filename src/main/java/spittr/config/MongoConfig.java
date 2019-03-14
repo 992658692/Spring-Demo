@@ -12,8 +12,8 @@ import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 
 /**
- * ¸ÃÀàµÄ¹¦ÄÜÓëMongoDBConfig¹¦ÄÜÏàÍ¬
- * ¸ÃÀà»áÒşÊ½µÄ´´½¨MongoTemplate
+ * è¯¥ç±»çš„åŠŸèƒ½ä¸MongoDBConfigåŠŸèƒ½ç›¸åŒ
+ * è¯¥ç±»ä¼šéšå¼çš„åˆ›å»ºMongoTemplate
  * 
  *
  */
@@ -22,13 +22,13 @@ import com.mongodb.ServerAddress;
 public class MongoConfig extends AbstractMongoConfiguration{
 
 	@Override
-	//·µ»ØÊı¾İ¿âÃû
+	//è¿”å›æ•°æ®åº“å
 	protected String getDatabaseName() {
 		return "OrderDB";
 	}
 
 	@Override
-	//·µ»ØÊı¾İ¿âÁ¬½Ó
+	//è¿”å›æ•°æ®åº“è¿æ¥
 	public Mongo mongo() throws Exception {
 		MongoCredential mongoCred = MongoCredential.createCredential("username", "OrderDB", "password".toCharArray());
 		return new MongoClient(new ServerAddress("localhost", 27017),Arrays.asList(mongoCred));

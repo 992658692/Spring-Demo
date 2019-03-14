@@ -9,7 +9,7 @@ import spittr.config.datasource.Spitter;
 public class Test {
 
 	@Autowired
-	//利用RMI就能往spring中注入spitterService的bean对象
+	//鍒╃敤RMI灏辫兘寰�spring涓敞鍏pitterService鐨刡ean瀵硅薄
 	private SpitterService spitterService;
 	
 	public void test () {

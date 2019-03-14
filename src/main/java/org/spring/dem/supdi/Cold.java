@@ -7,8 +7,8 @@ import java.lang.annotation.Target;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 
-//自定义限定符注解，这样就可以用@cold注解代替@Qualifier("cold")
-//自定义的限定符注解，可以摆脱字符串的限制 也可以java中规定的相同的注解只能作用一次的限制
+//鑷畾涔夐檺瀹氱娉ㄨВ锛岃繖鏍峰氨鍙互鐢ˊcold娉ㄨВ浠ｆ浛@Qualifier("cold")
+//鑷畾涔夌殑闄愬畾绗︽敞瑙ｏ紝鍙互鎽嗚劚瀛楃涓茬殑闄愬埗 涔熷彲浠ava涓瀹氱殑鐩稿悓鐨勬敞瑙ｅ彧鑳戒綔鐢ㄤ竴娆＄殑闄愬埗
 @Target({ElementType.CONSTRUCTOR, ElementType.FIELD,
 		 ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

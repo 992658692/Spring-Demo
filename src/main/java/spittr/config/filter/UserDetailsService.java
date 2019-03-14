@@ -3,8 +3,8 @@ package spittr.config.filter;
 import org.springframework.security.core.userdetails.UserDetails;
 
 /**
- * 使用非关系型数据库时，可以自定义用户服务接口
- * 只需呀实现该接口，返回代表给定用户的userDetails对象即可
+ * 浣跨敤闈炲叧绯诲瀷鏁版嵁搴撴椂锛屽彲浠ヨ嚜瀹氫箟鐢ㄦ埛鏈嶅姟鎺ュ彛
+ * 鍙渶鍛�瀹炵幇璇ユ帴鍙ｏ紝杩斿洖浠ｈ〃缁欏畾鐢ㄦ埛鐨剈serDetails瀵硅薄鍗冲彲
  *
  */
 public interface UserDetailsService {

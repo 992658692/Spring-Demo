@@ -11,7 +11,7 @@ public class JdbcSpitter implements JdbcSpitterRepository{
 	private JdbcOperations jdbcOperations;
 	
 	
-	//@Inject注解可以在JdbcSpitter创建的时候注入一个jdbcOperations对象
+	//@Inject娉ㄨВ鍙互鍦↗dbcSpitter鍒涘缓鐨勬椂鍊欐敞鍏ヤ竴涓猨dbcOperations瀵硅薄
 	@Inject
 	public JdbcSpitter(JdbcOperations jdbcOperations) {
 		this.jdbcOperations = jdbcOperations;

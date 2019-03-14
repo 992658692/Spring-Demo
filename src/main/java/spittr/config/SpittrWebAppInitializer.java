@@ -7,44 +7,44 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 
 //AbstractAnnotationConfigDispatcherServletInitializer
-//Ê¹ÓÃ¸ÃÀàÈ¥´´½¨Ç°¶Ë¿ØÖÆÆ÷µÄÊ±ºòweb.xmlĞèÒªÅäÖÃweb°æ±¾(°æ±¾±ØĞë3.0ÒÔÉÏ²Å¿ÉÒÔÈ¥xml»¯)
-//ÀûÓÃ¸Ã·½Ê½´´½¨µÄÈ±µã¾ÍÊÇ´í´ÖÅÅ²éÀ§ÄÑ(ÏîÄ¿Ã»ÓĞÒÀÀµmavenjar°ü µ«ÊÇµ¥´¿Æô¶¯²»±¨´í£¬Ö»ÓĞweb.xmlÏÔÊ¾´´½¨µÄÊ±ºò²Å»áÔÚ¿ØÖÆÌ¨ÌáÊ¾´íÎó)
+//ä½¿ç”¨è¯¥ç±»å»åˆ›å»ºå‰ç«¯æ§åˆ¶å™¨çš„æ—¶å€™web.xmléœ€è¦é…ç½®webç‰ˆæœ¬(ç‰ˆæœ¬å¿…é¡»3.0ä»¥ä¸Šæ‰å¯ä»¥å»xmlåŒ–)
+//åˆ©ç”¨è¯¥æ–¹å¼åˆ›å»ºçš„ç¼ºç‚¹å°±æ˜¯é”™ç²—æ’æŸ¥å›°éš¾(é¡¹ç›®æ²¡æœ‰ä¾èµ–mavenjaråŒ… ä½†æ˜¯å•çº¯å¯åŠ¨ä¸æŠ¥é”™ï¼Œåªæœ‰web.xmlæ˜¾ç¤ºåˆ›å»ºçš„æ—¶å€™æ‰ä¼šåœ¨æ§åˆ¶å°æç¤ºé”™è¯¯)
 
-//WebApplicationInitializer web3.0 È¥xml»¯µÄ±Ø±¸½Ó¿Ú  ÈİÆ÷»áÉ¨ÃèÊµÏÖ¸Ã½Ó¿ÚµÄÀà
+//WebApplicationInitializer web3.0 å»xmlåŒ–çš„å¿…å¤‡æ¥å£  å®¹å™¨ä¼šæ‰«æå®ç°è¯¥æ¥å£çš„ç±»
 public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	//µ±¼Ì³ĞAbstractAnnotationConfigDispatcherServletInitializer
-	//µÄÊ±ºò»á´´½¨DispatcherServletºÍContextLoadListener
-	//ËùÒÔ¼Ì³ĞÕâ¸öÀàµÄÊ±ºò¾Í»áÖØĞ´3¸ö·½·¨
+	//å½“ç»§æ‰¿AbstractAnnotationConfigDispatcherServletInitializer
+	//çš„æ—¶å€™ä¼šåˆ›å»ºDispatcherServletå’ŒContextLoadListener
+	//æ‰€ä»¥ç»§æ‰¿è¿™ä¸ªç±»çš„æ—¶å€™å°±ä¼šé‡å†™3ä¸ªæ–¹æ³•
 	
 	@Override
-	//¼ÓÔØ·şÎñ²ãÓëÊı¾İ³Ö¾Ã²ãµÄbean
+	//åŠ è½½æœåŠ¡å±‚ä¸æ•°æ®æŒä¹…å±‚çš„bean
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class<?>[]{RootConfig.class};
 	}
 
 	@Override
-	//¼ÓÔØ¿ØÖÆ²ã£¬ÊÔÍ¼½âÎöÆ÷£¬´¦ÀíÆ÷Ó³ÉäµÈÏà¹ØµÄbean
+	//åŠ è½½æ§åˆ¶å±‚ï¼Œè¯•å›¾è§£æå™¨ï¼Œå¤„ç†å™¨æ˜ å°„ç­‰ç›¸å…³çš„bean
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class<?>[]{WebConfig.class};
 	}
 
 	@Override
-	//½«DispatcherServletÓ³Éäµ½"/"
-	//¿ØÖÆÆ÷µÄÇëÇó£¬/±íÊ¾ËùÓĞÇëÇó¶¼¿ÉÒÔ½øÈëµ½¿ØÖÆ»ú È»ºóÏÂ·¢¸øctrl²ã
+	//å°†DispatcherServletæ˜ å°„åˆ°"/"
+	//æ§åˆ¶å™¨çš„è¯·æ±‚ï¼Œ/è¡¨ç¤ºæ‰€æœ‰è¯·æ±‚éƒ½å¯ä»¥è¿›å…¥åˆ°æ§åˆ¶æœº ç„¶åä¸‹å‘ç»™ctrlå±‚
 	protected String[] getServletMappings() {
 		return new String[]{"/*"};
 	}
 	
 	@Override
-	//ÉèÖÃ¶ÔmultipartµÄÖ§³Ö£¬½«ÉÏ´«ÎÄ¼şµÄÁÙÊ±Ä¿Â¼´æ´¢ÔÚ/src/mainÏÂ
+	//è®¾ç½®å¯¹multipartçš„æ”¯æŒï¼Œå°†ä¸Šä¼ æ–‡ä»¶çš„ä¸´æ—¶ç›®å½•å­˜å‚¨åœ¨/src/mainä¸‹
 	protected void customizeRegistration (Dynamic registration) {
 		registration.setMultipartConfig(new MultipartConfigElement("/src/main"));
 	}
 	
 /*	@Override
-	//Ò²¿ÉÒÔÒÔÕâÑùµÄ·½Ê½´´½¨fileter ¸Ã·½Ê½¿ÉÒÔ´«Èë¶à¸öfilter ¶øÇÒ²»ĞèÒªÓ³ÉäÂ·¾¶
-	//Ó³ÉäµÄÂ·¾¶ÓëDispatchServletÒ»ÖÂ
+	//ä¹Ÿå¯ä»¥ä»¥è¿™æ ·çš„æ–¹å¼åˆ›å»ºfileter è¯¥æ–¹å¼å¯ä»¥ä¼ å…¥å¤šä¸ªfilter è€Œä¸”ä¸éœ€è¦æ˜ å°„è·¯å¾„
+	//æ˜ å°„çš„è·¯å¾„ä¸DispatchServletä¸€è‡´
 	protected Filter[] getServletFilters () {
 		return new Filter[]{(Filter) new MyServlet()} ;
 	}*/

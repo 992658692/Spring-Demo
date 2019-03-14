@@ -13,25 +13,25 @@ public class MyServletInitializer implements WebApplicationInitializer{
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		//×¢²áservlet
+		//æ³¨å†Œservlet
 //		Dynamic myServlet = servletContext.addServlet("myServlet", (Class<? extends Servlet>) MyServlet.class);
-//		//Ó³Éäservlet
+//		//æ˜ å°„servlet
 //		myServlet.addMapping("/");
 		
-		//Èç¹ûÏëÔÚÏîÄ¿ÖĞ¼ÓÈëÕÕÆ¬ÉÏ´«µÄ¹¦ÄÜ£¬
-		//ÄÇÃ´³ıÁËÔÚÈİÆ÷ÖĞ´´½¨StandardServletMultipartResolverÖ®Íâ
-		//»¹ÒªÕë¶ÔmuitiparÕÕÆ¬µÄÉÏ´«×öÒ»Ğ©²ÎÊıÉèÖÃ
-		//ÎÒÃÇ¿ÉÒÔ½«ÕâĞ©ÅäÖÃÓëDispatcherServletÇ°¶Ë¿ØÖÆÆ÷°ó¶¨ÔÚÒ»Æğ
-		//ÕâÀï¶¨ÒåµÄÊÇÕÕÆ¬ÉÏ´«µÄÁÙÊ±ÎÄ¼şÂ·¾¶
-		//2097152 ±íÊ¾ÉÏ´«ÕÕÆ¬µÄ×î´óÈİÁ¿ÊÇ2M(Ä¬ÈÏÃ»ÓĞÏŞÖÆ)
-		//4194304±íÊ¾Õû¸ömultipartÇëÇóµÄ×î´óÈİÁ¿ÊÇ4M(Ä¬ÈÏÃ»ÓĞÏŞÖÆ)
-		//0±íÊ¾ËùÓĞÉÏ´«µÄÕÕÆ¬¶¼»áĞ´Èëµ½ÁÙÊ±ÎÄ¼şÄ¿Â¼ÏÂ(0ÊÇÄ¬ÈÏÖµ£¬ ¿ÉÒÔÉèÖÃÒ»¶¨´óĞ¡µÄÕÕÆ¬²Å¿ÉÒÔ´æµ½ÁÙÊ±Ä¿Â¼ÏÂ)
+		//å¦‚æœæƒ³åœ¨é¡¹ç›®ä¸­åŠ å…¥ç…§ç‰‡ä¸Šä¼ çš„åŠŸèƒ½ï¼Œ
+		//é‚£ä¹ˆé™¤äº†åœ¨å®¹å™¨ä¸­åˆ›å»ºStandardServletMultipartResolverä¹‹å¤–
+		//è¿˜è¦é’ˆå¯¹muitiparç…§ç‰‡çš„ä¸Šä¼ åšä¸€äº›å‚æ•°è®¾ç½®
+		//æˆ‘ä»¬å¯ä»¥å°†è¿™äº›é…ç½®ä¸DispatcherServletå‰ç«¯æ§åˆ¶å™¨ç»‘å®šåœ¨ä¸€èµ·
+		//è¿™é‡Œå®šä¹‰çš„æ˜¯ç…§ç‰‡ä¸Šä¼ çš„ä¸´æ—¶æ–‡ä»¶è·¯å¾„
+		//2097152 è¡¨ç¤ºä¸Šä¼ ç…§ç‰‡çš„æœ€å¤§å®¹é‡æ˜¯2M(é»˜è®¤æ²¡æœ‰é™åˆ¶)
+		//4194304è¡¨ç¤ºæ•´ä¸ªmultipartè¯·æ±‚çš„æœ€å¤§å®¹é‡æ˜¯4M(é»˜è®¤æ²¡æœ‰é™åˆ¶)
+		//0è¡¨ç¤ºæ‰€æœ‰ä¸Šä¼ çš„ç…§ç‰‡éƒ½ä¼šå†™å…¥åˆ°ä¸´æ—¶æ–‡ä»¶ç›®å½•ä¸‹(0æ˜¯é»˜è®¤å€¼ï¼Œ å¯ä»¥è®¾ç½®ä¸€å®šå¤§å°çš„ç…§ç‰‡æ‰å¯ä»¥å­˜åˆ°ä¸´æ—¶ç›®å½•ä¸‹)
 //		myServlet.setMultipartConfig(new MultipartConfigElement("/src/mian", 2097152, 4194304, 0));
 //		
-//		//×¢²áfilter
+//		//æ³¨å†Œfilter
 //		javax.servlet.FilterRegistration.Dynamic myFilter = 
 //				servletContext.addFilter("myServlet", (Class<? extends Filter>)MyServlet.class);
-//		//Ó³ÉäfilterÂ·¾¶
+//		//æ˜ å°„filterè·¯å¾„
 //		myFilter.addMappingForServletNames(null, false, "/user/***");
 	}
 

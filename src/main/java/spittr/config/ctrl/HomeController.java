@@ -24,63 +24,63 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import spittr.config.datasource.Spitter;
 
-//@RestControllerÊ¹ÓÃ¸Ã×¢½â´úÌæController¿ÉÒÔÊ¡ÂÔÃ¿¸ö·½·¨ÖĞµÄ@ResponseBody ºÍ@@RequestBody ×¢½â
-//Ëü»áÎª¿ØÖÆÆ÷Ó¦ÓÃÏûÏ¢×ª»»¹¦ÄÜ
+//@RestControllerä½¿ç”¨è¯¥æ³¨è§£ä»£æ›¿Controllerå¯ä»¥çœç•¥æ¯ä¸ªæ–¹æ³•ä¸­çš„@ResponseBody å’Œ@@RequestBody æ³¨è§£
+//å®ƒä¼šä¸ºæ§åˆ¶å™¨åº”ç”¨æ¶ˆæ¯è½¬æ¢åŠŸèƒ½
 @RestController
-//@ControllerAdvice¸Ã×¢½â°üº¬(@ExceptionHandler,@InitBinder,@ModelAttribute)
-//¸Ã×¢½âËù×÷ÓÃµÄÀàÀïËù°üº¬µÄÄÇĞ©×Ó×¢½â»á×÷ÓÃµ½Õû¸öÓ¦ÓÃ³ÌĞòËù¿ØÖÆµÄ@RequestMapping
-//Ò²¾ÍÊÇËµÔÚ¸Ã×¢½âÀàÄÚ´´½¨@ExceptionHandlerÄÇÃ´ËùÓĞ@RequestMappingÏÂµÄÒì³£¶¼»áÍ³Ò»µ½@ExceptionHandlerÏÂ
+//@ControllerAdviceè¯¥æ³¨è§£åŒ…å«(@ExceptionHandler,@InitBinder,@ModelAttribute)
+//è¯¥æ³¨è§£æ‰€ä½œç”¨çš„ç±»é‡Œæ‰€åŒ…å«çš„é‚£äº›å­æ³¨è§£ä¼šä½œç”¨åˆ°æ•´ä¸ªåº”ç”¨ç¨‹åºæ‰€æ§åˆ¶çš„@RequestMapping
+//ä¹Ÿå°±æ˜¯è¯´åœ¨è¯¥æ³¨è§£ç±»å†…åˆ›å»º@ExceptionHandleré‚£ä¹ˆæ‰€æœ‰@RequestMappingä¸‹çš„å¼‚å¸¸éƒ½ä¼šç»Ÿä¸€åˆ°@ExceptionHandlerä¸‹
 @ControllerAdvice
 public class HomeController {
 
-	//@Valid×¢½â±íÊ¾Æô¶¯UserµÄ notNull size Ğ£Ñé
+	//@Validæ³¨è§£è¡¨ç¤ºå¯åŠ¨Userçš„ notNull size æ ¡éªŒ
 	@RequestMapping("xxx")
 	public String home (@Valid User user) {
 		System.out.println(user.getUserName());
 		return "home";
 	}
 	
-	//{}´ú±í×Å±äÁ¿²¿·Ö
-	//Êµ¼ÊÖĞÏë·ÃÎÊÕâ¸öÇëÇóµÄÂ·¾¶Ö»ĞèÒªlocalhost:8080/xx¾Í¿ÉÒÔÁËÖÁÓÚÖĞÀ¨ºÅÖĞµÄ²ÎÊı¿ÉÒÔÊÇÈÎÒâ²ÎÊı
-	//ÈçÇëÇólocalhost:8080/xx/123456
-	//ÄÇÃ´123456¾ÍÊÇspittleIdµÄÖµ Ëü»áËæ×ÅÇëÇó´øÈë½øÀ´²¢¸³Öµ¸øss
-	//×¢½â@PathVariable¾ÍÊÇ»ñÈ¡ÇëÇóÖĞÕ¼Î»·ûËù´øÈëµÄ²ÎÊı£¬Èç¹û@PathVariable×¢½âÃ»ÓĞvalueÊôĞÔÄÇÃ´
-	//ËüÄ¬ÈÏÈë²Î²ÎÊıÃûÓëÕ¼Î»·û²ÎÊıÃûÏàÍ¬
-	//produces ÊôĞÔ±íÃ÷¸ÃÇëÇóÖ»½ÓÊÜAccpetÍ·²¿ĞÅÏ¢ÖĞ±íÊöÀàĞÍÎªjsonµÄÇëÇó£¬ÄÄÅÂURLµÄÇëÇóÊÇPOST
-	//µ«ÊÇÈç¹û±íÊöÀàĞÍ²»ÊÇjsonÄÇÃ´¾Í²»»á½øÈëµ½¸Ã·½·¨ÖĞ£¬»òÊÇÖ±½Ó·µ»Ø406ÏìÓ¦
-	//»¹ÓĞÒ»¸öconsumesÊôĞÔ ËüÓëproducesÊôĞÔÀàËÆ Ö»ÊÇ²éÑ¯µÄÊÇÇëÇóÍ·ÖĞContent-TypeĞÅÏ¢
+	//{}ä»£è¡¨ç€å˜é‡éƒ¨åˆ†
+	//å®é™…ä¸­æƒ³è®¿é—®è¿™ä¸ªè¯·æ±‚çš„è·¯å¾„åªéœ€è¦localhost:8080/xxå°±å¯ä»¥äº†è‡³äºä¸­æ‹¬å·ä¸­çš„å‚æ•°å¯ä»¥æ˜¯ä»»æ„å‚æ•°
+	//å¦‚è¯·æ±‚localhost:8080/xx/123456
+	//é‚£ä¹ˆ123456å°±æ˜¯spittleIdçš„å€¼ å®ƒä¼šéšç€è¯·æ±‚å¸¦å…¥è¿›æ¥å¹¶èµ‹å€¼ç»™ss
+	//æ³¨è§£@PathVariableå°±æ˜¯è·å–è¯·æ±‚ä¸­å ä½ç¬¦æ‰€å¸¦å…¥çš„å‚æ•°ï¼Œå¦‚æœ@PathVariableæ³¨è§£æ²¡æœ‰valueå±æ€§é‚£ä¹ˆ
+	//å®ƒé»˜è®¤å…¥å‚å‚æ•°åä¸å ä½ç¬¦å‚æ•°åç›¸åŒ
+	//produces å±æ€§è¡¨æ˜è¯¥è¯·æ±‚åªæ¥å—Accpetå¤´éƒ¨ä¿¡æ¯ä¸­è¡¨è¿°ç±»å‹ä¸ºjsonçš„è¯·æ±‚ï¼Œå“ªæ€•URLçš„è¯·æ±‚æ˜¯POST
+	//ä½†æ˜¯å¦‚æœè¡¨è¿°ç±»å‹ä¸æ˜¯jsoné‚£ä¹ˆå°±ä¸ä¼šè¿›å…¥åˆ°è¯¥æ–¹æ³•ä¸­ï¼Œæˆ–æ˜¯ç›´æ¥è¿”å›406å“åº”
+	//è¿˜æœ‰ä¸€ä¸ªconsumeså±æ€§ å®ƒä¸produceså±æ€§ç±»ä¼¼ åªæ˜¯æŸ¥è¯¢çš„æ˜¯è¯·æ±‚å¤´ä¸­Content-Typeä¿¡æ¯
 	@RequestMapping(value="xx/{spittleId}", produces="application/json", method = RequestMethod.POST)
 	
 	@ResponseBody
-	//@ResponseBody Ìø¹ıÁË½«¶ÔÏó·ÅÈëµ½Ä£ĞÍÖĞÈ»ºóäÖÈ¾µ½ÊÓÍ¼µÄ¹ı³Ì
-	//¶øÊÇÖ±½Ó½«¶ÔÏó×ÊÔ´·¢ËÍ¸ø¿Í»§¶Ë£¬²¢×ª»»³É¿Í»§¶Ë¿É½ÓÊÜµÄ±íÊöĞÎÊ½£¬¾ßÌå¿Í»§¶ËĞèÒªÄÄÖÖ±íÊöĞÎÊ½£¬DispatcherServlet»áÔÚÇëÇóÖĞAccpetÍ·²¿È¥ÕÒµ½¶ÔÓ¦ĞÅÏ¢
-	//@RequestBody ¸Ã×¢½âÊÇÕë¶Ô·ÃÎÊ·½·¨µÄÇëÇó£¬²éÑ¯ÇëÇóÖĞµÄContent-Type Í·²¿£¬²¢²éÕÒµ½ÄÜ½«ÇëÇóÌå×ª»»ÎªSpitter²ÎÊıÀàĞÍµÄÏûÏ¢×ª»»Æ÷
+	//@ResponseBody è·³è¿‡äº†å°†å¯¹è±¡æ”¾å…¥åˆ°æ¨¡å‹ä¸­ç„¶åæ¸²æŸ“åˆ°è§†å›¾çš„è¿‡ç¨‹
+	//è€Œæ˜¯ç›´æ¥å°†å¯¹è±¡èµ„æºå‘é€ç»™å®¢æˆ·ç«¯ï¼Œå¹¶è½¬æ¢æˆå®¢æˆ·ç«¯å¯æ¥å—çš„è¡¨è¿°å½¢å¼ï¼Œå…·ä½“å®¢æˆ·ç«¯éœ€è¦å“ªç§è¡¨è¿°å½¢å¼ï¼ŒDispatcherServletä¼šåœ¨è¯·æ±‚ä¸­Accpetå¤´éƒ¨å»æ‰¾åˆ°å¯¹åº”ä¿¡æ¯
+	//@RequestBody è¯¥æ³¨è§£æ˜¯é’ˆå¯¹è®¿é—®æ–¹æ³•çš„è¯·æ±‚ï¼ŒæŸ¥è¯¢è¯·æ±‚ä¸­çš„Content-Type å¤´éƒ¨ï¼Œå¹¶æŸ¥æ‰¾åˆ°èƒ½å°†è¯·æ±‚ä½“è½¬æ¢ä¸ºSpitterå‚æ•°ç±»å‹çš„æ¶ˆæ¯è½¬æ¢å™¨
 	public String home (@PathVariable("spittleId") String ss, @RequestBody Spitter s) {
 		return "home";
 	}
 	
 	
 	@RequestMapping("/multipart")
-	//Í¨¹ı@RequestPart×¢½âÀ´Ö¸¶¨ÕÕÆ¬²ÎÊıÓÃbyte[]Êı×é½ÓÊÕ
-	//¿ÉÒÔÊ¹ÓÃspringÌá¹©µÄmultipartFile½Ó¿ÚÀ´´úÌæbyteÊı×é½ÓÊÕÕÕÆ¬¡£
-	//Ëü¿ÉÒÔ¸üÈ«ÃæµÄ»ñÈ¡ÕÕÆ¬µÄĞÅÏ¢²¢Êä³ö
+	//é€šè¿‡@RequestPartæ³¨è§£æ¥æŒ‡å®šç…§ç‰‡å‚æ•°ç”¨byte[]æ•°ç»„æ¥æ”¶
+	//å¯ä»¥ä½¿ç”¨springæä¾›çš„multipartFileæ¥å£æ¥ä»£æ›¿byteæ•°ç»„æ¥æ”¶ç…§ç‰‡ã€‚
+	//å®ƒå¯ä»¥æ›´å…¨é¢çš„è·å–ç…§ç‰‡çš„ä¿¡æ¯å¹¶è¾“å‡º
 	
-	//part½Ó¿ÚÓëmultipartFile½Ó¿ÚµÄ¹¦ÄÜÆäÊµ´óÖÂÏàÍ¬
-	//Ö»ÊÇÈç¹ûÒªÊ¹ÓÃmultipartFile½Ó¿ÚÒªÔÚ¿ØÖÆÆ÷ÖĞ¼ÓÈëmultipartResolver µ«ÊÇpart¾Í²»ĞèÒª
+	//partæ¥å£ä¸multipartFileæ¥å£çš„åŠŸèƒ½å…¶å®å¤§è‡´ç›¸åŒ
+	//åªæ˜¯å¦‚æœè¦ä½¿ç”¨multipartFileæ¥å£è¦åœ¨æ§åˆ¶å™¨ä¸­åŠ å…¥multipartResolver ä½†æ˜¯partå°±ä¸éœ€è¦
 	public String processRegistration (@RequestPart("profilePicture") byte[] profilePicture,
 									   @RequestPart("file")MultipartFile file, @RequestPart("part")Part part) 
 									   throws IllegalStateException, IOException {
 		
-		//²ÉÓÃmultipartFile½Ó¿Ú¿ÉÒÔºÜ·½±ãµÄ½«Ç°¶ËµÄÕÕÆ¬±£´æÔÚ±¾µØÁÙÊ±ÎÄ¼şÖĞ
+		//é‡‡ç”¨multipartFileæ¥å£å¯ä»¥å¾ˆæ–¹ä¾¿çš„å°†å‰ç«¯çš„ç…§ç‰‡ä¿å­˜åœ¨æœ¬åœ°ä¸´æ—¶æ–‡ä»¶ä¸­
 		file.transferTo(new File("/src/main" + file.getOriginalFilename()));
 		return "";
 	}
 	
-	//Òì³£´¦Àí
+	//å¼‚å¸¸å¤„ç†
 	@ExceptionHandler(Exception.class)
 	public String test (RedirectAttributes model) {
 		User u = new User();
-		//Í¨¹ıaddFlashAttribute·½·¨¿ÉÒÔÔÚÖØ¶¨ÏòÖĞ×ª·¢³ıÁËint stringÖ®ÍâµÄ¶ÔÏó²ÎÊı
+		//é€šè¿‡addFlashAttributeæ–¹æ³•å¯ä»¥åœ¨é‡å®šå‘ä¸­è½¬å‘é™¤äº†int stringä¹‹å¤–çš„å¯¹è±¡å‚æ•°
 		model.addFlashAttribute("user", u);
 		return "error/xxx";
 	}

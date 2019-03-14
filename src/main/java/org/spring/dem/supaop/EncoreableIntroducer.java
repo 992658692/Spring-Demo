@@ -6,8 +6,8 @@ import org.aspectj.lang.annotation.DeclareParents;
 @Aspect
 public class EncoreableIntroducer {
 
-	//ÓÉÓÚPerformanceÊÇÒ»¸ö½Ó¿Ú£¬ËùÒÔ+ºÅ±íÊ¾ËùÓĞÊµÏÖÕâ¸ö½Ó¿ÚµÄ×ÓÀà£¬¶ø²»ÊÇÖ¸Ïòµ¥Ò»µÄÊµÏÖ
-	//¶ødefaultImplÖ¸µÄÊÇencoreable½Ó¿ÚµÄ¾ßÌåÊµÏÖÀà
+	//ç”±äºPerformanceæ˜¯ä¸€ä¸ªæ¥å£ï¼Œæ‰€ä»¥+å·è¡¨ç¤ºæ‰€æœ‰å®ç°è¿™ä¸ªæ¥å£çš„å­ç±»ï¼Œè€Œä¸æ˜¯æŒ‡å‘å•ä¸€çš„å®ç°
+	//è€ŒdefaultImplæŒ‡çš„æ˜¯encoreableæ¥å£çš„å…·ä½“å®ç°ç±»
 	@DeclareParents(value="org.spring.dem.supaop.Performance+",
 						defaultImpl=EncoreableImpl.class)
 	public static Encoreable encoreable;

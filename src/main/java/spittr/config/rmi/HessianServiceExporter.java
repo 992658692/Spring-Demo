@@ -4,14 +4,14 @@ import org.springframework.context.annotation.Bean;
 
 import com.caucho.hessian.server.HessianServlet;
 
-//由于Hession是基于HTTP的，所以如果你想导出Hession服务除了要配置内部服务之外，还需要实现一个SpringMvc的控制器
+//鐢变簬Hession鏄熀浜嶩TTP鐨勶紝鎵�浠ュ鏋滀綘鎯冲鍑篐ession鏈嶅姟闄や簡瑕侀厤缃唴閮ㄦ湇鍔′箣澶栵紝杩橀渶瑕佸疄鐜颁竴涓猄pringMvc鐨勬帶鍒跺櫒
 
 public class HessianServiceExporter extends HessianServlet{
 	
 	@Bean
 	public HessianServiceExporter hessionExportedSpitterSerivce(SpitterService spitter) {
 		HessianServiceExporter exporter = new HessianServiceExporter();
-		//hession与RMI的区别就是不需要设置ServiceName
+		//hession涓嶳MI鐨勫尯鍒氨鏄笉闇�瑕佽缃甋erviceName
 		exporter.setService(spitter);
 		exporter.setAPIClass(SpitterService.class);
 		return exporter;

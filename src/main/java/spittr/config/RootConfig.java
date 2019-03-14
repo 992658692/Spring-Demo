@@ -38,9 +38,9 @@ import spittr.config.ctrl.User;
 
 @Configuration
 @ComponentScan(basePackages={"spittr.config.ctrl"}, excludeFilters={@Filter(type=FilterType.ANNOTATION)})
-//É¨Ãèdao½Ó¿Ú
+//æ‰«ædaoæ¥å£
 @MapperScan("org.jade.dao")
-//É¨Ãè¶ÔÓ¦µÄproperties È»ºóÍ¨¹ı×¢ÈëEnvironmentÀàµ÷ÓÃ
+//æ‰«æå¯¹åº”çš„properties ç„¶åé€šè¿‡æ³¨å…¥Environmentç±»è°ƒç”¨
 @PropertySource("classpath:application.properties")
 public class RootConfig {
 	
@@ -53,8 +53,8 @@ public class RootConfig {
 		return new User();
 	}
 	
-	//ÆäÊµÈç¹û²»ÊÇws  µ¥´¿µÄmvcµÄ»°ÆäÊµ²»ĞèÒªÊÖ¶¯ÅäÖÃÊı¾İ¿âÁ¬½Ó 
-	//Êı¾İ¿âÁ¬½ÓÅäÖÃ¿ªÊ¼
+	//å…¶å®å¦‚æœä¸æ˜¯ws  å•çº¯çš„mvcçš„è¯å…¶å®ä¸éœ€è¦æ‰‹åŠ¨é…ç½®æ•°æ®åº“è¿æ¥ 
+	//æ•°æ®åº“è¿æ¥é…ç½®å¼€å§‹
 	@Bean
 	public DataSource getDataSource () {
 		BasicDataSource dataSource = new BasicDataSource();
@@ -76,21 +76,21 @@ public class RootConfig {
 		sessionFactory.setDataSource(getDataSource());
 		return sessionFactory.getObject();
 	}
-	//Êı¾İ¿âÁ¬½ÓÅäÖÃ½áÊø
+	//æ•°æ®åº“è¿æ¥é…ç½®ç»“æŸ
 
-	//´¦ÀíÇëÇóÖĞµÄÍ¼Æ¬
+	//å¤„ç†è¯·æ±‚ä¸­çš„å›¾ç‰‡
 	@Bean
 	public MultipartResolver multipartResolverSta () {
 		return new StandardServletMultipartResolver();
 	}
 	
-	//ServletÈİÆ÷·Ç3.0¼°ÒÔÉÏ°æ±¾Ê±
-	//¿ÉÒÔÑ¡ÔñÌæ´úµÄ·½Ê½À´´¦ÀíÕÕÆ¬
+	//Servletå®¹å™¨é3.0åŠä»¥ä¸Šç‰ˆæœ¬æ—¶
+	//å¯ä»¥é€‰æ‹©æ›¿ä»£çš„æ–¹å¼æ¥å¤„ç†ç…§ç‰‡
 	@Bean
 	public MultipartResolver multipartResolverCom () throws IOException {
 		CommonsMultipartResolver multipart = new CommonsMultipartResolver();
 		multipart.setUploadTempDir(new FileSystemResource("/src/main"));
-		multipart.setMaxInMemorySize(0);//ÈÎºÎÕÕÆ¬¶¼´æÈëÁÙÊ±
+		multipart.setMaxInMemorySize(0);//ä»»ä½•ç…§ç‰‡éƒ½å­˜å…¥ä¸´æ—¶
 		multipart.setMaxUploadSize(2097152);
 		return multipart;
 	}
@@ -100,19 +100,19 @@ public class RootConfig {
 		return new JdbcTemplate(dataSources());
 	}
 	
-	//Ê¹ÓÃJNDIÅäÖÃÊı¾İ¿âµÄÊı¾İÔ´
+	//ä½¿ç”¨JNDIé…ç½®æ•°æ®åº“çš„æ•°æ®æº
 	@Bean
 	public JndiObjectFactoryBean dataSource() {
 		JndiObjectFactoryBean jndi = new JndiObjectFactoryBean();
-		//ÅäÖÃjndiµÄ×ÊÔ´Ãû³Æ
+		//é…ç½®jndiçš„èµ„æºåç§°
 		jndi.setJndiName("jdbc/spittr");
-		//¸Ã²ÎÊıÉèÖÃÎªtrueÖ®ºó£¬jdni»á×Ô¶¯½«jndiNameÀ©Õ¹³Éjava:comp/env/jdbc/spittr
+		//è¯¥å‚æ•°è®¾ç½®ä¸ºtrueä¹‹åï¼Œjdniä¼šè‡ªåŠ¨å°†jndiNameæ‰©å±•æˆjava:comp/env/jdbc/spittr
 		jndi.setResourceRef(true);
 		return jndi;
 	}
 	
-	//profile¿ÉÒÔÖ¸¶¨¶à¸ö²»Í¬µÄÊı¾İÔ´ÓÃÓÚ²»Í¬µÄ»·¾³Ê¹ÓÃ
-	//¾ßÌåÒª»½ĞÑÄÄ¸öprofileÔò¿ÉÒÔÍ¨¹ı2ÖÖ·½Ê½¼¤»î web.xmlºÍClassPathXmlApplicationContext
+	//profileå¯ä»¥æŒ‡å®šå¤šä¸ªä¸åŒçš„æ•°æ®æºç”¨äºä¸åŒçš„ç¯å¢ƒä½¿ç”¨
+	//å…·ä½“è¦å”¤é†’å“ªä¸ªprofileåˆ™å¯ä»¥é€šè¿‡2ç§æ–¹å¼æ¿€æ´» web.xmlå’ŒClassPathXmlApplicationContext
 	//<context-param>
 	//<param-name>spring.profiles.active</param-name>
 	//<param-value>dev,production</param-value>
@@ -127,30 +127,30 @@ public class RootConfig {
 		ds.setUrl("jdbc:mysql://111.231.58.67:3306/test?useUnicode=true&characterEncoding=utf8");
 		ds.setUsername("root");
 		ds.setPassword("root");
-		ds.setInitialSize(5);//³õÊ¼»¯Á¬½ÓÊı
+		ds.setInitialSize(5);//åˆå§‹åŒ–è¿æ¥æ•°
 		
-		//Spring »¹Ö§³ÖÆäÓàµÄÊı¾İÔ´ÅäÖÃÀà£¬µ«ÊÇËûÃÇ²¢²»Ö§³ÖÁ¬½Ó³Ø¹¦ÄÜ£¬¶ÔÓÚÉú²ú»·¾³²¢²»ÊÊÓÃ
-		//¸ÃÅäÖÃÔÚÃ¿¸öÇëÇóÁ¬½ÓÊ±¶¼»áĞÂ½¨Ò»¸öÁ¬½Ó£¬¶ÔÓÚDriverManagerDataSourceÅäÖÃÀ´Ëµ²¢Ã»ÓĞÒ»¸ö³Ø×ÓµÄ¸ÅÄî
+		//Spring è¿˜æ”¯æŒå…¶ä½™çš„æ•°æ®æºé…ç½®ç±»ï¼Œä½†æ˜¯ä»–ä»¬å¹¶ä¸æ”¯æŒè¿æ¥æ± åŠŸèƒ½ï¼Œå¯¹äºç”Ÿäº§ç¯å¢ƒå¹¶ä¸é€‚ç”¨
+		//è¯¥é…ç½®åœ¨æ¯ä¸ªè¯·æ±‚è¿æ¥æ—¶éƒ½ä¼šæ–°å»ºä¸€ä¸ªè¿æ¥ï¼Œå¯¹äºDriverManagerDataSourceé…ç½®æ¥è¯´å¹¶æ²¡æœ‰ä¸€ä¸ªæ± å­çš„æ¦‚å¿µ
 		DriverManagerDataSource dmd = new DriverManagerDataSource();
 		
-		//¸ÃÀàÓëDriverManagerDataSourceÀàËÆ£¬µ«ÊÇËüÖ±½ÓÊ¹ÓÃµÄÊÇJDBCµÄÇı¶¯
+		//è¯¥ç±»ä¸DriverManagerDataSourceç±»ä¼¼ï¼Œä½†æ˜¯å®ƒç›´æ¥ä½¿ç”¨çš„æ˜¯JDBCçš„é©±åŠ¨
 		SimpleDriverDataSource sdds = new SimpleDriverDataSource();
 		
-		//¸ÃÀàÔÚÃ¿¸öÇëÇóÊ±¶¼»á·µ»ØÍ¬Ò»¸öÁ¬½Ó£¬¿ÉÒÔ¿´×÷ÊÇÖ»ÓĞÒ»¸öÁ¬½ÓµÄ³Ø×Ó
+		//è¯¥ç±»åœ¨æ¯ä¸ªè¯·æ±‚æ—¶éƒ½ä¼šè¿”å›åŒä¸€ä¸ªè¿æ¥ï¼Œå¯ä»¥çœ‹ä½œæ˜¯åªæœ‰ä¸€ä¸ªè¿æ¥çš„æ± å­
 		SingleConnectionDataSource scds = new SingleConnectionDataSource();
 		return ds;
 	}
 	
-	//ÅäÖÃhibernate
+	//é…ç½®hibernate
 	@Bean
 	public LocalSessionFactoryBean sessionFatory() {
 		LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
-		//ÅäÖÃÊı¾İÔ´
+		//é…ç½®æ•°æ®æº
 		sfb.setDataSource(getDataSource());
-		//ÅäÖÃhibernateµÄ³Ö¾Ã»¯²ßÂÔ 
+		//é…ç½®hibernateçš„æŒä¹…åŒ–ç­–ç•¥ 
 		sfb.setMappingResources(new String[]{"spring.xmls"});
 		Properties props = new Properties();
-		//ÕâÀïÅäÖÃ²Ù×÷Ï¸½Ú£¬Ê¹ÓÃÁËH2Êı¾İ¿â²¢ÇÒ°´ÕÕH2DialectÀ´¹¹½¨sql
+		//è¿™é‡Œé…ç½®æ“ä½œç»†èŠ‚ï¼Œä½¿ç”¨äº†H2æ•°æ®åº“å¹¶ä¸”æŒ‰ç…§H2Dialectæ¥æ„å»ºsql
 		props.setProperty("dialect", "org.hibernate.dialect.H2Dialect");
 		sfb.setHibernateProperties(props);
 		//
@@ -159,14 +159,14 @@ public class RootConfig {
 	}
 	
 	
-	//ÈİÆ÷¹ÜÀíÀàĞÍµÄJPA
+	//å®¹å™¨ç®¡ç†ç±»å‹çš„JPA
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerBean(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 		LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
 		emfb.setDataSource(dataSource);
-		//jpaVendorAdapterÊôĞÔÖ¸¶¨ÁËÊ¹ÓÃÄÄ¸ö³§ÉÌµÄJPAÊµÏÖ(EclipseLinkJpaVendorAdapter HibernamteJpaVendorAdapter OpenJpaVendorAdapter)
+		//jpaVendorAdapterå±æ€§æŒ‡å®šäº†ä½¿ç”¨å“ªä¸ªå‚å•†çš„JPAå®ç°(EclipseLinkJpaVendorAdapter HibernamteJpaVendorAdapter OpenJpaVendorAdapter)
 		emfb.setJpaVendorAdapter(jpaVendorAdapter);
-		emfb.setPackagesToScan("spittr.config");//É¨Ãè¶ÔÓ¦°üÏÂµÄÎÄ¼ş´øÓĞ@Entity×¢½âµÄÀà
+		emfb.setPackagesToScan("spittr.config");//æ‰«æå¯¹åº”åŒ…ä¸‹çš„æ–‡ä»¶å¸¦æœ‰@Entityæ³¨è§£çš„ç±»
 		return emfb;
 	}
 	

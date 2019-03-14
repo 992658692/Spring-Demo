@@ -10,15 +10,15 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import com.mongodb.Mongo;
 
 @Configuration
-//É¨Ãè¸Ã°üÏÂ´øÓĞrepositoryµÄmongodbÀà
+//æ‰«æè¯¥åŒ…ä¸‹å¸¦æœ‰repositoryçš„mongodbç±»
 @EnableMongoRepositories(basePackages={"spittr.config.datasource"})
 public class MongoDBConfig {
 
 	@SuppressWarnings("deprecation")
 	@Bean
-	//½¨Á¢Êı¾İ¿âÁ¬½Ó
-	//Èç¹ûµ¥´¿Ê¹ÓÃMongoClientÈ¥´´Á¢Á¬½ÓµÄ»°±ØÈ»»¹Òª´¦Àí¶ÔÓ¦Å×³öµÄÒì³£
-	//ÓÉÓÚMongoFactoryBeanÊÇÒ»¸ö¹¤³§ËùÒÔÎÒÃÇ½«¹¹½¨¹¤×÷½»¸ø¹¤³§²¢²»ĞèÒª¹ÜÀíÒì³£
+	//å»ºç«‹æ•°æ®åº“è¿æ¥
+	//å¦‚æœå•çº¯ä½¿ç”¨MongoClientå»åˆ›ç«‹è¿æ¥çš„è¯å¿…ç„¶è¿˜è¦å¤„ç†å¯¹åº”æŠ›å‡ºçš„å¼‚å¸¸
+	//ç”±äºMongoFactoryBeanæ˜¯ä¸€ä¸ªå·¥å‚æ‰€ä»¥æˆ‘ä»¬å°†æ„å»ºå·¥ä½œäº¤ç»™å·¥å‚å¹¶ä¸éœ€è¦ç®¡ç†å¼‚å¸¸
 	public MongoFactoryBean mongo() {
 		MongoFactoryBean mongo = new MongoFactoryBean();
 		mongo.setHost("localhost");
@@ -26,10 +26,10 @@ public class MongoDBConfig {
 	}
 	
 	@Bean
-	//Õâ¸öMongodbµÄÄ£°æ¼´Ê¹ÎÒÃÇÔÚÏîÄ¿ÖĞÃ»ÓĞÊ¹ÓÃ£¬Ò²±ØĞëÒª´´½¨Ò»¸öËüµÄ¶ÔÏó
-	//ÒòÎªrepositoty×Ô¶¯»¯Éú³ÉµÄµ×²ã¹¦ÄÜ»áÊ¹ÓÃµ½Ëü ËùÒÔÎÒÃÇ±ØĞëÒªÉùÃ÷ÕâÑùµÄÀà
+	//è¿™ä¸ªMongodbçš„æ¨¡ç‰ˆå³ä½¿æˆ‘ä»¬åœ¨é¡¹ç›®ä¸­æ²¡æœ‰ä½¿ç”¨ï¼Œä¹Ÿå¿…é¡»è¦åˆ›å»ºä¸€ä¸ªå®ƒçš„å¯¹è±¡
+	//å› ä¸ºrepositotyè‡ªåŠ¨åŒ–ç”Ÿæˆçš„åº•å±‚åŠŸèƒ½ä¼šä½¿ç”¨åˆ°å®ƒ æ‰€ä»¥æˆ‘ä»¬å¿…é¡»è¦å£°æ˜è¿™æ ·çš„ç±»
 	public MongoOperations mongoTemplate(Mongo mongo) {
-		//mongoÊÇÁ¬½Ó¶ÔÏó£¬OrderDBÊÇÊı¾İ¿âÃû
+		//mongoæ˜¯è¿æ¥å¯¹è±¡ï¼ŒOrderDBæ˜¯æ•°æ®åº“å
 		return new MongoTemplate(mongo, "OrderDB");
 	}
 }

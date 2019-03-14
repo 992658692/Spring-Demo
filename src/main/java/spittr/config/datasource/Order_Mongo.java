@@ -8,27 +8,27 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-//Document±ê×¢µÄÀà¿ÉÒÔ½èÖúMongoTemplate»ò×Ô¶¯Éú³ÉµÄRepository½øĞĞ³Ö¾Ã»¯
+//Documentæ ‡æ³¨çš„ç±»å¯ä»¥å€ŸåŠ©MongoTemplateæˆ–è‡ªåŠ¨ç”Ÿæˆçš„Repositoryè¿›è¡ŒæŒä¹…åŒ–
 @Document
 public class Order_Mongo {
 	
 	@Autowired
-	//½«MongoTemplate×¢ÈëÊ¹ÓÃ
+	//å°†MongoTemplateæ³¨å…¥ä½¿ç”¨
 	private MongoOperations mongo;
 	
 
 	@Id
-	//@Id×¢½â±íÊ¾ÎÄµµµÄID
+	//@Idæ³¨è§£è¡¨ç¤ºæ–‡æ¡£çš„ID
 	private String id;
 	
 	@Field("xxx")
-	//@Field×¢½â¿ÉÒÔ½«customerÓ³Éäµ½ÎÄµµÖĞµÄxxxÓò
-	//Èç¹ûÃ»ÓĞÊ¹ÓÃ×¢½âÖ¸Ã÷µÄ»°ÄÇÃ´×Ö¶ÎÃûÓëÎÄµµÖĞµÄÓòÏàÍ¬
+	//@Fieldæ³¨è§£å¯ä»¥å°†customeræ˜ å°„åˆ°æ–‡æ¡£ä¸­çš„xxxåŸŸ
+	//å¦‚æœæ²¡æœ‰ä½¿ç”¨æ³¨è§£æŒ‡æ˜çš„è¯é‚£ä¹ˆå­—æ®µåä¸æ–‡æ¡£ä¸­çš„åŸŸç›¸åŒ
 	private String customer;
 	
 	private String type;
 	
-	//NoSqlÖĞµÄ¼¯ºÏ²»»áµ¥¶À´æ·Å£¬¶øÊÇÖ±½ÓÔÚ¸ÃÎÄµµÖĞ±£´æµÄ Ò²ÊÇÒÔÒ»¸ö¼¯ºÏµÄĞÎÊ½´æÔÚ¸ÃÀà¶ÔÓ¦µÄÎÄµµÖĞ
+	//NoSqlä¸­çš„é›†åˆä¸ä¼šå•ç‹¬å­˜æ”¾ï¼Œè€Œæ˜¯ç›´æ¥åœ¨è¯¥æ–‡æ¡£ä¸­ä¿å­˜çš„ ä¹Ÿæ˜¯ä»¥ä¸€ä¸ªé›†åˆçš„å½¢å¼å­˜åœ¨è¯¥ç±»å¯¹åº”çš„æ–‡æ¡£ä¸­
 	private List<Object> item;
 
 	public String getId() {

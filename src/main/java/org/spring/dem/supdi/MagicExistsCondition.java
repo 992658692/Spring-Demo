@@ -7,24 +7,24 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 public class MagicExistsCondition implements Condition{
 
-	//Spring4.0Ö®ºó@profile×¢½â¾ÍÊÇÍ¨¹ı@Conditional×¢½âºÍConditionÊµÏÖÀ´ÊµÏÖËüµÄ¹¦ÄÜµÄ
+	//Spring4.0ä¹‹å@profileæ³¨è§£å°±æ˜¯é€šè¿‡@Conditionalæ³¨è§£å’ŒConditionå®ç°æ¥å®ç°å®ƒçš„åŠŸèƒ½çš„
 	@Override
 	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
 		Environment env = (Environment) context.getEnvironment();
 		return env.containsProperty("magic");
 	}
 	
-	//ConditionContext½Ó¿Ú
-	//getRegistry()·µ»ØµÄBeanDefinitionRegistry¼ì²ébean¶¨Òå
-	//getBeanFactory()·µ»ØµÄConfigurableListableBeanFactory¼ì²ébeanÊÇ·ñ´æÔÚ£¬ÉõÖÁÌ½²ébeanµÄÊôĞÔ
-	//getEnvironment()·µ»ØµÄEnvironment¼ì²é»·¾³±äÁ¿ÊÇ·ñ´æÔÚÒÔ¼°ËüµÄÖµÊÇÊ²Ã´
-	//getResourceLoader()·µ»ØµÄResourceLoaderËù¼ÓÔØµÄ×ÊÔ´
-	//getClassLoader()·µ»ØµÄClassLoader¼ÓÔØ²¢¼ì²éÀàÊÇ·ñ´æÔÚ
+	//ConditionContextæ¥å£
+	//getRegistry()è¿”å›çš„BeanDefinitionRegistryæ£€æŸ¥beanå®šä¹‰
+	//getBeanFactory()è¿”å›çš„ConfigurableListableBeanFactoryæ£€æŸ¥beanæ˜¯å¦å­˜åœ¨ï¼Œç”šè‡³æ¢æŸ¥beançš„å±æ€§
+	//getEnvironment()è¿”å›çš„Environmentæ£€æŸ¥ç¯å¢ƒå˜é‡æ˜¯å¦å­˜åœ¨ä»¥åŠå®ƒçš„å€¼æ˜¯ä»€ä¹ˆ
+	//getResourceLoader()è¿”å›çš„ResourceLoaderæ‰€åŠ è½½çš„èµ„æº
+	//getClassLoader()è¿”å›çš„ClassLoaderåŠ è½½å¹¶æ£€æŸ¥ç±»æ˜¯å¦å­˜åœ¨
 	
 	
-	//AnnotatedTypeMetadata½Ó¿Ú
-	//¸Ã½Ó¿ÚÄÜÈÃÎÒÃÇ¼ì²éÏµÍ³ÖĞ´ø@beanµÄ×¢½âÉÏ»¹ÓĞÆäËûÊ²Ã´×¢½â
-	//½èÖúisAnnotated()·½·¨£¬ÎÒÃÇÄÜ¹»ÅĞ¶Ï´øÓĞ@Bean×¢½âµÄ·½·¨ÊÇ²»ÊÇ»¹ÓĞÆäËûÌØ¶¨µÄ×¢½â¡£½èÖúÆäËûµÄÄÇĞ©·½·¨£¬
-	//ÎÒÃÇÄÜ¹»¼ì²é@Bean×¢½âµÄ·½·¨ÉÏÆäËû×¢½âµÄÊôĞÔ
+	//AnnotatedTypeMetadataæ¥å£
+	//è¯¥æ¥å£èƒ½è®©æˆ‘ä»¬æ£€æŸ¥ç³»ç»Ÿä¸­å¸¦@beançš„æ³¨è§£ä¸Šè¿˜æœ‰å…¶ä»–ä»€ä¹ˆæ³¨è§£
+	//å€ŸåŠ©isAnnotated()æ–¹æ³•ï¼Œæˆ‘ä»¬èƒ½å¤Ÿåˆ¤æ–­å¸¦æœ‰@Beanæ³¨è§£çš„æ–¹æ³•æ˜¯ä¸æ˜¯è¿˜æœ‰å…¶ä»–ç‰¹å®šçš„æ³¨è§£ã€‚å€ŸåŠ©å…¶ä»–çš„é‚£äº›æ–¹æ³•ï¼Œ
+	//æˆ‘ä»¬èƒ½å¤Ÿæ£€æŸ¥@Beanæ³¨è§£çš„æ–¹æ³•ä¸Šå…¶ä»–æ³¨è§£çš„å±æ€§
 
 }

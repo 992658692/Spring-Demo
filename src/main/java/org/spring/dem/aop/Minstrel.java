@@ -20,12 +20,12 @@ public class Minstrel {
 	}
 	
 	public void singAroundQuest (ProceedingJoinPoint pj) throws Throwable {
-		//befor之前
+		//befor涔嬪墠
 		System.out.println("around");
 		System.out.println("around-befor");
-		//befor之后after之前
+		//befor涔嬪悗after涔嬪墠
 		pj.proceed();
-		//after之前
+		//after涔嬪墠
 		System.out.println("around");
 	}
 }

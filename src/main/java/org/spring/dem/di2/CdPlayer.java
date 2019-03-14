@@ -6,10 +6,10 @@ public class CdPlayer implements MediaPlayer{
 
 	private CompactDisc cd;
 	
-	//@Autowired×¢½â¿ÉÒÔÓÃÀ´×¢ÈëÈÎºÎĞèÒªCompactDisc¶ÔÏóbeanµÄµØ·½
-	//²»¹ÜÊÇ¹¹Ôì·½·¨»¹ÊÇset·½·¨¡£
-	//ÓÉÓÚCompactDiscÎª»ùÀà½Ó¿Ú£¬ËùÒÔSpringÖĞ´´½¨µÄSgtPeppers¿ÉÒÔ×¢Èë½øÀ´
-	//¸Ã×¢½â»¹ÓĞÒ»¸örequiredÊôĞÔ£¬¸ÃÊôĞÔ»áÔÚSpringÖĞÃ»ÓĞ¶ÔÓ¦beanµÄÊ±ºò£¬ÈÃÕâ¸öbean´¦ÓÚÎ´×°Åä×´Ì¬
+	//@Autowiredæ³¨è§£å¯ä»¥ç”¨æ¥æ³¨å…¥ä»»ä½•éœ€è¦CompactDiscå¯¹è±¡beançš„åœ°æ–¹
+	//ä¸ç®¡æ˜¯æ„é€ æ–¹æ³•è¿˜æ˜¯setæ–¹æ³•ã€‚
+	//ç”±äºCompactDiscä¸ºåŸºç±»æ¥å£ï¼Œæ‰€ä»¥Springä¸­åˆ›å»ºçš„SgtPepperså¯ä»¥æ³¨å…¥è¿›æ¥
+	//è¯¥æ³¨è§£è¿˜æœ‰ä¸€ä¸ªrequiredå±æ€§ï¼Œè¯¥å±æ€§ä¼šåœ¨Springä¸­æ²¡æœ‰å¯¹åº”beançš„æ—¶å€™ï¼Œè®©è¿™ä¸ªbeanå¤„äºæœªè£…é…çŠ¶æ€
 	@Autowired(required=false)
 	public CdPlayer (CompactDisc cd) {
 		this.cd = cd;

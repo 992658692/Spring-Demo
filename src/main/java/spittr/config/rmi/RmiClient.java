@@ -8,22 +8,22 @@ public class RmiClient {
 	
 
 	@Bean
-	//´´½¨RMI·şÎñ
+	//åˆ›å»ºRMIæœåŠ¡
 	public RmiServiceExporter rmiExporter(SpitterService spitterService) {
 		RmiServiceExporter rmiExprter = new RmiServiceExporter();
-		rmiExprter.setService(spitterService);//°ÑÒ»¸öbean·Åµ½RMI£¬Ê¹µÃ¸Ãbean·¢²¼ÎªÒ»¸öRMI·şÎñ
-		rmiExprter.setServiceName("spitterService");//¶¨ÒåRMIµÄ·şÎñ
-		rmiExprter.setServiceInterface(SpitterService.class);//¸ÃRMIÎªËùÓĞÊµÏÖ¸Ã½Ó¿ÚµÄ·şÎñ
-		rmiExprter.setRegistryHost("rmi.spitter.com");//¶¨ÒåRMI×¢²á±í
-		rmiExprter.setRegistryPort(1099);//¶¨ÒåRMI¶Ë¿Ú1099ÊÇÄ¬ÈÏRMI¶Ë¿Ú
+		rmiExprter.setService(spitterService);//æŠŠä¸€ä¸ªbeanæ”¾åˆ°RMIï¼Œä½¿å¾—è¯¥beanå‘å¸ƒä¸ºä¸€ä¸ªRMIæœåŠ¡
+		rmiExprter.setServiceName("spitterService");//å®šä¹‰RMIçš„æœåŠ¡
+		rmiExprter.setServiceInterface(SpitterService.class);//è¯¥RMIä¸ºæ‰€æœ‰å®ç°è¯¥æ¥å£çš„æœåŠ¡
+		rmiExprter.setRegistryHost("rmi.spitter.com");//å®šä¹‰RMIæ³¨å†Œè¡¨
+		rmiExprter.setRegistryPort(1099);//å®šä¹‰RMIç«¯å£1099æ˜¯é»˜è®¤RMIç«¯å£
 		return rmiExprter;
 	}
 	
 	@Bean
-	//´´½¨RMI´úÀí£¬Í¨¹ı´úÀíÀ´µ÷ÓÃSpitterServiceµÄRMI·şÎñ
+	//åˆ›å»ºRMIä»£ç†ï¼Œé€šè¿‡ä»£ç†æ¥è°ƒç”¨SpitterServiceçš„RMIæœåŠ¡
 	public RmiProxyFactoryBean spitterService() {
 		RmiProxyFactoryBean rmiProxy = new RmiProxyFactoryBean();
-		//rmiÊÇÍ¨Ñ¶Ğ­Òé localhostÊÇÖ¸±¾»ú SpitterServiceÊÇÖ¸·şÎñÃû
+		//rmiæ˜¯é€šè®¯åè®® localhostæ˜¯æŒ‡æœ¬æœº SpitterServiceæ˜¯æŒ‡æœåŠ¡å
 		rmiProxy.setServiceUrl("rmi://localhost/SpitterService");
 		rmiProxy.setServiceInterface(SpitterService.class);
 		return rmiProxy;

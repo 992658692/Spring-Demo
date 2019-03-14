@@ -10,13 +10,13 @@ public class TrackCounter {
 
 	private Map<Integer, Integer> trackCounts = new HashMap<Integer, Integer>();
 	
-	//¶¨ÒåÇĞµãÊ±¿ÉÒÔ¶¨ÒåÇĞµãµÄ²ÎÊıÀàĞÍÎªint
-	//²ÎÊıÃûÓÃargs(trackNumber)ÏŞ¶¨·ûÀ´±íÊ¾
+	//å®šä¹‰åˆ‡ç‚¹æ—¶å¯ä»¥å®šä¹‰åˆ‡ç‚¹çš„å‚æ•°ç±»å‹ä¸ºint
+	//å‚æ•°åç”¨args(trackNumber)é™å®šç¬¦æ¥è¡¨ç¤º
 	@Pointcut("execution(** org.spring.dem.supaop.TrackCounter.trackPlayed(int) && args(trackNumber))")
 	public void trackPlayed (int trackNumber) {
 	}
 	
-	//Í¨ÖªÖĞÒ²¿ÉÒÔÊ¹ÓÃÇĞµãµÄ²ÎÊı(ÒÔ·½·¨Ãû(²ÎÊıÃû))ÕâÑùµÄ·½Ê½½«²ÎÊı´øÈëµ½Í¨ÖªÄÚ£¬ÕâÑùÕâ¸öÇ°ÖÃÍ¨Öª¾Í¿ÉÒÔÊ¹ÓÃ¸Ã²ÎÊıÁË
+	//é€šçŸ¥ä¸­ä¹Ÿå¯ä»¥ä½¿ç”¨åˆ‡ç‚¹çš„å‚æ•°(ä»¥æ–¹æ³•å(å‚æ•°å))è¿™æ ·çš„æ–¹å¼å°†å‚æ•°å¸¦å…¥åˆ°é€šçŸ¥å†…ï¼Œè¿™æ ·è¿™ä¸ªå‰ç½®é€šçŸ¥å°±å¯ä»¥ä½¿ç”¨è¯¥å‚æ•°äº†
 	@Before("trackPlayed(trackNumber)")
 	public void countTrack (int trackNumber) {
 		int currentCount = getPlayCount(trackNumber);

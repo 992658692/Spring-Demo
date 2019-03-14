@@ -4,7 +4,7 @@ public class BraveKnight implements Knight{
 
 	private Quest quest;
 	
-	/** ·²ÊÇÊµÏÖQuest½Ó¿Ú ¾ÍÄÜ·ûºÏÌõ¼ş±»´´½¨ Õâ¾ÍÊÇspring ¹¹Ôì×¢ÈëµÄÔ­ĞÍ*/
+	/** å‡¡æ˜¯å®ç°Questæ¥å£ å°±èƒ½ç¬¦åˆæ¡ä»¶è¢«åˆ›å»º è¿™å°±æ˜¯spring æ„é€ æ³¨å…¥çš„åŸå‹*/
 	public BraveKnight (Quest quest) {
 		this.quest = quest;
 	}

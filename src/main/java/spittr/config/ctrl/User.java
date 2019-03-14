@@ -5,9 +5,9 @@ import javax.validation.constraints.Size;
 
 public class User {
 
-	//ÏëÒªÔÚÏîÄ¿ÖĞÆôÓÃJSR303×¢½â±ØĞëÒª¿ªÆô<mvc:annotation-driven />
-	//@notNull×¢½â±íÊ¾Èç¹ûÓÃUserÀàÀ´½ÓÊÜ²ÎÊıµÄ»°ÄÇÃ´userName²ÎÊı²»ÄÜÎª¿ÕÇÒ³¤¶ÈÒªÔÚ5-10Ö®¼ä
-	@NotNull(message="Ãû×Ö²»ÄÜÎª¿Õ")
+	//æƒ³è¦åœ¨é¡¹ç›®ä¸­å¯ç”¨JSR303æ³¨è§£å¿…é¡»è¦å¼€å¯<mvc:annotation-driven />
+	//@notNullæ³¨è§£è¡¨ç¤ºå¦‚æœç”¨Userç±»æ¥æ¥å—å‚æ•°çš„è¯é‚£ä¹ˆuserNameå‚æ•°ä¸èƒ½ä¸ºç©ºä¸”é•¿åº¦è¦åœ¨5-10ä¹‹é—´
+	@NotNull(message="åå­—ä¸èƒ½ä¸ºç©º")
 	@Size(min=5, max=10)
 	private String userName;
 	

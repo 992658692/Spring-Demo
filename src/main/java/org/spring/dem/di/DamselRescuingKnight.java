@@ -4,7 +4,7 @@ public class DamselRescuingKnight implements Knight{
 
 	private RescueDamselQuest quest;
 	
-	/** 最初的对象管理模式太过死板*/
+	/** 鏈�鍒濈殑瀵硅薄绠＄悊妯″紡澶繃姝绘澘*/
 	public DamselRescuingKnight () {
 		quest = new RescueDamselQuest();
 	}

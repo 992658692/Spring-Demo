@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import spittr.config.ctrl.User;
 
 @Configuration
-//Æô¶¯mvc×¢½â
+//å¯åŠ¨mvcæ³¨è§£
 @EnableWebMvc
 @ComponentScan("spittr.config.ctrl")
 public class WebConfig extends WebMvcConfigurerAdapter {
@@ -29,11 +29,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	}
 	
 	@Override
-	//´´½¨ContentNegotiatingViewResolverÊÓÍ¼½âÎöÆ÷µÄ·½·¨Ö®Ò»£º
-	//ÉùÃ÷Ò»¸öContentNegotiationManagerµÄbean
-	//ÖØÔØ¸Ã·½·¨¾ÍÄÜ´´½¨Ò»¸öContentNegotiationManager
-	//¶øContentNegotiationConfigurer¶ÔÏóÄÜ¶ÔContentNegotiationManager×öÒ»Ğ©ÀàĞÍÉèÖÃ
-	//¸Ã°¸ÀıÖĞÊÇ½«Ä¬ÈÏÄÚÈİÉèÖÃÎªapplication/json
+	//åˆ›å»ºContentNegotiatingViewResolverè§†å›¾è§£æå™¨çš„æ–¹æ³•ä¹‹ä¸€ï¼š
+	//å£°æ˜ä¸€ä¸ªContentNegotiationManagerçš„bean
+	//é‡è½½è¯¥æ–¹æ³•å°±èƒ½åˆ›å»ºä¸€ä¸ªContentNegotiationManager
+	//è€ŒContentNegotiationConfigurerå¯¹è±¡èƒ½å¯¹ContentNegotiationManageråšä¸€äº›ç±»å‹è®¾ç½®
+	//è¯¥æ¡ˆä¾‹ä¸­æ˜¯å°†é»˜è®¤å†…å®¹è®¾ç½®ä¸ºapplication/json
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 		configurer.defaultContentType(MediaType.APPLICATION_JSON);
 	}

@@ -5,25 +5,25 @@ import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 
-//ÓÉÓÚÕâÖÖ½âÎöÆ÷ÀàÐÍÓÐ²»ÉÙÈ±ÏÝ£¬»¹ÊÇÍÆ¼öÊ¹ÓÃSpringµÄÏûÏ¢×ª»»Æ÷
+//ç”±äºŽè¿™ç§è§£æžå™¨ç±»åž‹æœ‰ä¸å°‘ç¼ºé™·ï¼Œè¿˜æ˜¯æŽ¨èä½¿ç”¨Springçš„æ¶ˆæ¯è½¬æ¢å™¨
 public class ContentNegotiation {
 
 	@Bean
-	//µ±ÔÚwebConfigÖÐÉèÖÃÍê½âÎöÆ÷µÄÄ¬ÈÏÀàÐÍÖ®ºó
-	//ÐèÒª½«Ä¬ÈÏµÄÀàÐÍ×¢Èëµ½¸Ã½âÎöÆ÷ÖÐÀ´
+	//å½“åœ¨webConfigä¸­è®¾ç½®å®Œè§£æžå™¨çš„é»˜è®¤ç±»åž‹ä¹‹åŽ
+	//éœ€è¦å°†é»˜è®¤çš„ç±»åž‹æ³¨å…¥åˆ°è¯¥è§£æžå™¨ä¸­æ¥
 	public ViewResolver cnViewResolver(ContentNegotiationManager cnm) {
-		//ÊÓÍ¼½âÎöÆ÷
-		//Ëü»á¿¼ÂÇµ½AcceptÍ·²¿ÐÅÏ¢²¢Ê¹ÓÃËüËùÇëÇóµÄÃ½ÌåÀàÐÍ£¬µ«ÊÇËü»áÊ×ÏÈ²é¿´URLµÄÎÄ¼þÍØÕ¹Ãû
-		//Èç¹ûURLÔÚ½áÎ²´¦ÓÐÎÄ¼þÍØÕ¹ÃûµÄ»°£¬¸Ã½âÎöÆ÷½«»á¸ù¾ÝÎÄ¼þÍØÕ¹ÃûÈ·¶¨ËùÐèÀàÐÍ¡£
-		//ÀýÈçÍØÕ¹ÃûÊÇ.jsonµÄ»°£¬ÄÇÃ´ËùÐèµÄÄÚÈÝÀàÐÍ±ØÐëÊÇ'application/json'
-		//Èç¹û¸ù¾ÝÎÄ¼þÍØÕ¹Ãû²»ÄÜµÃµ½ÈÎºÎÃ½ÌåÀàÐÍµÄ»°£¬²Å»á¿ªÊ¼¿¼ÂÇAcceptÍ·²¿ÐÅÏ¢
-		//×îºóÈç¹ûÁ¬AcceptÍ·²¿ÐÅÏ¢Ò²Ã»ÓÐ¶ÔÓ¦ÀàÐÍµÄ»°£¬¸Ã½âÎöÆ÷»áÊ¹ÓÃ'/'×÷ÎªÄ¬ÈÏÄÚÈÝÀàÐÍ
-		//Ò»µ©ÄÚÈÝÀàÐÍÈ·ÈÏºó£¬Ëü¾Í½«¸ÃÂß¼­ÊÓÍ¼Ãû½âÎöÎªäÖÈ¾Ä£Ê½µÄView£¬µ«ÊÇËüÊÇ½»ÓÉÆäËûµÄÊÓÍ¼
-		//½âÎöÆ÷½âÎöµÄ£¬Ëü±¾Éí²»¾ß±¸½âÎö¹¦ÄÜ£¡
+		//è§†å›¾è§£æžå™¨
+		//å®ƒä¼šè€ƒè™‘åˆ°Acceptå¤´éƒ¨ä¿¡æ¯å¹¶ä½¿ç”¨å®ƒæ‰€è¯·æ±‚çš„åª’ä½“ç±»åž‹ï¼Œä½†æ˜¯å®ƒä¼šé¦–å…ˆæŸ¥çœ‹URLçš„æ–‡ä»¶æ‹“å±•å
+		//å¦‚æžœURLåœ¨ç»“å°¾å¤„æœ‰æ–‡ä»¶æ‹“å±•åçš„è¯ï¼Œè¯¥è§£æžå™¨å°†ä¼šæ ¹æ®æ–‡ä»¶æ‹“å±•åç¡®å®šæ‰€éœ€ç±»åž‹ã€‚
+		//ä¾‹å¦‚æ‹“å±•åæ˜¯.jsonçš„è¯ï¼Œé‚£ä¹ˆæ‰€éœ€çš„å†…å®¹ç±»åž‹å¿…é¡»æ˜¯'application/json'
+		//å¦‚æžœæ ¹æ®æ–‡ä»¶æ‹“å±•åä¸èƒ½å¾—åˆ°ä»»ä½•åª’ä½“ç±»åž‹çš„è¯ï¼Œæ‰ä¼šå¼€å§‹è€ƒè™‘Acceptå¤´éƒ¨ä¿¡æ¯
+		//æœ€åŽå¦‚æžœè¿žAcceptå¤´éƒ¨ä¿¡æ¯ä¹Ÿæ²¡æœ‰å¯¹åº”ç±»åž‹çš„è¯ï¼Œè¯¥è§£æžå™¨ä¼šä½¿ç”¨'/'ä½œä¸ºé»˜è®¤å†…å®¹ç±»åž‹
+		//ä¸€æ—¦å†…å®¹ç±»åž‹ç¡®è®¤åŽï¼Œå®ƒå°±å°†è¯¥é€»è¾‘è§†å›¾åè§£æžä¸ºæ¸²æŸ“æ¨¡å¼çš„Viewï¼Œä½†æ˜¯å®ƒæ˜¯äº¤ç”±å…¶ä»–çš„è§†å›¾
+		//è§£æžå™¨è§£æžçš„ï¼Œå®ƒæœ¬èº«ä¸å…·å¤‡è§£æžåŠŸèƒ½ï¼
 		
-		//¸Ã½âÎöÆ÷µÄÓÅµã¾ÍÊÇÄÜÍêÈ«Óë¿ØÖÆ²ã°þÀë¿ª£¬Ê¹µÃÏàÍ¬µÄÒ»Ì×¿ØÖÆÆ÷£¬¾ÍÄÜ²úÉú²»Í¬ÀàÐÍµÄÄÚÈÝ
-		//µ«ÊÇ¸Ã½âÎöÆ÷Ö»ÄÜ¾ö¶¨×ÊÔ´ÈçºÎäÖÈ¾µ½¿Í»§¶Ë£¬²¢²»ÄÜÉæ¼°¿Í»§¶Ë·¢Ê²Ã´ÄÚÈÝ¸ø¿ØÖÆÆ÷
-		//¶øÇÒÖ»ÄÜäÖÈ¾Ä£ÐÍ¸ø¿Í»§¶Ë£¬¶ø²»ÊÇ×ÊÔ´
+		//è¯¥è§£æžå™¨çš„ä¼˜ç‚¹å°±æ˜¯èƒ½å®Œå…¨ä¸ŽæŽ§åˆ¶å±‚å‰¥ç¦»å¼€ï¼Œä½¿å¾—ç›¸åŒçš„ä¸€å¥—æŽ§åˆ¶å™¨ï¼Œå°±èƒ½äº§ç”Ÿä¸åŒç±»åž‹çš„å†…å®¹
+		//ä½†æ˜¯è¯¥è§£æžå™¨åªèƒ½å†³å®šèµ„æºå¦‚ä½•æ¸²æŸ“åˆ°å®¢æˆ·ç«¯ï¼Œå¹¶ä¸èƒ½æ¶‰åŠå®¢æˆ·ç«¯å‘ä»€ä¹ˆå†…å®¹ç»™æŽ§åˆ¶å™¨
+		//è€Œä¸”åªèƒ½æ¸²æŸ“æ¨¡åž‹ç»™å®¢æˆ·ç«¯ï¼Œè€Œä¸æ˜¯èµ„æº
 		ContentNegotiatingViewResolver cnvr = new ContentNegotiatingViewResolver();
 		cnvr.setContentNegotiationManager(cnm);
 		return cnvr;

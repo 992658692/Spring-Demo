@@ -8,15 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.data.mongodb.repository.ExistsQuery;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -35,7 +27,10 @@ public class HomeController {
 
 	//@Valid注解表示启动User的 notNull size 校验
 	@RequestMapping("xxx")
-	public String home (@Valid User user) {
+	//@RequestParam该注解如果不加 那么请求进来的参数只要与name的参数名一致也可以保证参数能够顺利的传入
+	//但是加了之后可以通过value字段来控制参数名，并且可以通过required字段来控制是否报错，如果不配置required，默认是true
+	//那么请求中如果没有对应参数名的参数传进来 则会出400错误，而且可以defaultValue来控制默认值
+	public String home (@Valid User user, @RequestParam(defaultValue = "", required = false, value = "") String name) {
 		System.out.println(user.getUserName());
 		return "home";
 	}

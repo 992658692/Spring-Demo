@@ -11,6 +11,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 //利用该方式创建的缺点就是错粗排查困难(项目没有依赖mavenjar包 但是单纯启动不报错，只有web.xml显示创建的时候才会在控制台提示错误)
 
 //WebApplicationInitializer web3.0 去xml化的必备接口  容器会扫描实现该接口的类
+//在 Servlet 3.0 环境下，Servlet 容器会在 classpath 下搜索实现了 javax.servlet
+//.ServletContainerInitializer 接口的任何类，找到之后用它来初始化 Servlet 容器。
+//Spring 实现了以上接口，实现类叫做 SpringServletContainerInitializer， 它会依次搜寻实现了 WebApplicationInitializer的任何类，并委派这个类实现配置。之后，Spring 3.2开始引入一个简易的 WebApplicationInitializer 实现类，这就是 AbstractAnnotationConfigDispatcherServletInitializer。
+//所以 SpittrWebAppInitializer 继承 AbstractAnnotationConfigDispatcherServletInitializer之后，也就是间接实现了 WebApplicationInitializer，在 Servlet 3.0容器中，它会被自动搜索到，被用来配置 servlet 上下文。
+
 public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	//当继承AbstractAnnotationConfigDispatcherServletInitializer
